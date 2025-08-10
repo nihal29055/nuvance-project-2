@@ -1,102 +1,193 @@
 .wrapper {
-    background-color: black;
-    color: white;
-    width: 100%;
-    height: 200vh; /* enough for both parts */
-    font-family: Arial, sans-serif;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-  }
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 200vh; /* enough for both parts */
+  font-family: Arial, sans-serif;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Top paragraph */
+.topText {
+  position: absolute;
+  top: 60px;
+  left: 320px;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 220px;
+  font-weight: bold;
+}
+
+/* Big Title Block */
+.titleBlock {
+  position: absolute;
+  top: 150px;
+  left: 280px;
+}
   
-  /* Top paragraph */
+.title {
+  font-size: 9rem;
+  color: #ff2cc3;
+  margin: 5rem;
+  line-height: 1.2;
+  position: relative;
+  margin-left: -220px; /* pulled left like screenshot */
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Discord Tag */
+.discordTag {
+  background: linear-gradient(135deg, #b8ff82, #adff2f);
+  padding: 4px 12px;
+  border-radius: 3px;
+  transform: rotate(-4deg);
+  position: absolute;
+  top: 80px;
+  left: -40px;
+  z-index: 1;
+}
+
+/* Twitter Tag (ellipse) */
+.twitterTag {
+  background-color: transparent;
+  color: #b8ff82;
+  border: 2px solid #b8ff82;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 6px 14px;
+  transform: rotate(-10deg);
+  position: relative;
+  top: 39px;
+  left: -125px;
+  margin: 0 8px;
+}
+
+/* Instagram Tag (jagged brush) */
+.instagramTag {
+  background: linear-gradient(135deg, #b8ff82, #adff2f);
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+  padding: 4px 14px;
+  transform: rotate(-8deg);
+  position: absolute;
+  top: 420px;
+  left: 1100px;
+}
+
+/* Bottom block */
+.bottomBlock {
+  position: absolute;
+  top: 700px;
+  left: 320px;
+  max-width: 300px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bottomText {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 20px;
+}
+
+/* Responsive for phone screens */
+@media (max-width: 640px) {
+  .wrapper {
+    height: auto; /* mobile adaptive height */
+    padding: 20px 16px;
+  }
+
   .topText {
-    position: absolute;
-    top: 60px;
-    left: 320px;
-    font-size: 12px;
-    line-height: 1.4;
-    max-width: 220px;
-    font-weight: bold;
+    position: static !important; /* remove absolute for flow layout */
+    max-width: 90vw !important;
+    margin: 1rem auto 2rem auto !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    left: auto !important;
+    top: auto !important;
   }
-  
-  /* Big Title Block */
+
   .titleBlock {
-    position: absolute;
-    top: 150px;
-    left: 280px;
+    position: relative !important; /* relative for correct flow */
+    margin: 0 auto 1.5rem auto !important;
+    text-align: center !important;
+    width: auto !important;
+    top: auto !important;
+    left: auto !important;
   }
-    
+
   .title {
-    font-size: 9rem;
-    color: #ff2cc3;
-    margin: 5rem;
-    line-height: 1.2;
-    position: relative;
-    margin-left: -220px; /* pulled left like screenshot */
-  }
-  
-  .tag {
+    font-size: 3.5rem !important; /* chhota font */
+    margin: 0 auto 1rem auto !important;
+    line-height: 1.1 !important;
+    margin-left: 0 !important;
+    color: #ff2cc3 !important;
+    position: relative !important;
     display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    color: black;
+    white-space: normal !important;
+    max-width: 100vw !important;
+    word-break: break-word !important;
   }
-  
-  /* Discord Tag */
-  .discordTag {
-    background: linear-gradient(135deg, #b8ff82, #adff2f);
-    padding: 4px 12px;
-    border-radius: 3px;
-    transform: rotate(-4deg);
-    position: absolute;
-    top: 80px;
-    left: -40px;
-    z-index: 1;
-  }
-  
-  /* Twitter Tag (ellipse) */
-  .twitterTag {
-    background-color: transparent;
-    color: #b8ff82;
-    border: 2px solid #b8ff82;
-    border-radius: 50%;
-    font-size: 12px;
-    padding: 6px 14px;
-    transform: rotate(-10deg);
-    position: relative;
-    top: 39px;
-    left: -125px;
-    margin: 0 8px;
-  }
-  
-  /* Instagram Tag (jagged brush) */
+
+  /* Social tags inline near title */
+  .discordTag,
+  .twitterTag,
   .instagramTag {
-    background: linear-gradient(135deg, #b8ff82, #adff2f);
-    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-    padding: 4px 14px;
-    transform: rotate(-8deg);
-    position: absolute;
-    top: 420px;
-    left: 1100px;
+    position: relative !important;
+    display: inline-block !important;
+    transform: none !important;
+    margin: 0 0.5rem !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    padding: 4px 12px !important;
+    border-radius: 3px !important;
   }
-  
-  /* Bottom block */
+
+  .twitterTag {
+    border-radius: 50% !important;
+    border: 2px solid #b8ff82 !important;
+    padding: 6px 14px !important;
+    color: #b8ff82 !important;
+    background-color: transparent !important;
+  }
+
+  .instagramTag {
+    clip-path: none !important;
+    background: linear-gradient(135deg, #b8ff82, #adff2f) !important;
+  }
+
   .bottomBlock {
-    position: absolute;
-    top: 700px;
-    left: 320px;
-    max-width: 300px;
+    position: static !important;
+    margin: 0 auto !important;
+    max-width: 90vw !important;
+    padding-bottom: 3rem !important;
+    text-align: center !important;
   }
-  
+
   .subtitle {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    margin-bottom: 0.75rem !important;
   }
-  
+
   .bottomText {
-    font-size: 12px;
-    line-height: 1.4;
-    margin-top: 20px;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-top: 0 !important;
+    white-space: pre-wrap !important;
   }
+}

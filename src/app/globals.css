@@ -1,15 +1,59 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss";
 
-body{
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE & Edge */
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Chrome, Safari */
+  background: transparent;
+}
+
+body {
   cursor: none;
   background-color: black;
+  overflow-y: scroll;
+  /* allow scrolling */
 }
-/* Blinking cursor */
-@keyframes blink {
-  0%, 100% {
+
+.bunny-hidden {
+  transform: translate(-33%, 120%);
+  opacity: 0;
+}
+
+@keyframes bunnyRise {
+  0% {
+    transform: translate(-33%, 120%);
+    opacity: 0;
+  }
+
+  20% {
     opacity: 1;
   }
+
+  100% {
+    transform: translate(-33%, 0%);
+    opacity: 1;
+  }
+}
+
+.bunny-rise {
+  animation: bunnyRise 1.8s ease-out forwards;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
   50% {
     opacity: 0;
   }
@@ -19,7 +63,7 @@ body{
   animation: blink 1s step-end infinite;
 }
 
-/* Animated ... loading dots */
+/* Loading dots */
 .dot-animate::after {
   content: "";
   display: inline-block;
@@ -28,19 +72,32 @@ body{
 }
 
 @keyframes dots {
-  0% { content: ""; }
-  25% { content: "."; }
-  50% { content: ".."; }
-  75% { content: "..."; }
-  100% { content: ""; }
+  0% {
+    content: "";
+  }
+
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75% {
+    content: "...";
+  }
+
+  100% {
+    content: "";
+  }
 }
 
-
+/* Custom cursor */
 .custom-cursor-root {
   cursor: none;
 }
 
-/* Base cursor style */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -55,14 +112,13 @@ body{
   transition: transform 150ms ease, opacity 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
-/* When hovering on nav text */
 .custom-cursor.hovered {
-  background-color: rgba(251, 253, 247, 0.1); /* transparent bubble */
-  box-shadow: 0 0 20px rgba(179, 255, 0, 0.4); /* soft glow */
-  transform: translate(-50%, -50%) scale(1.2); /* slightly enlarge */
+  background-color: rgba(251, 253, 247, 0.1);
+  box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
-.nav-hover{
-    background-color: rgba(251, 253, 247, 0.1); /* transparent bubble */
-    box-shadow: 0 0 20px rgba(179, 255, 0, 0.4); /* soft glow */
+.nav-hover {
+  background-color: rgba(251, 253, 247, 0.1);
+  box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
 }

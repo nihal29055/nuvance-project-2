@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Rock_Salt } from "next/font/google";
+import { motion } from "framer-motion";
 import JOC from "../components/JoinOurCommunity";
-
 
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ const FAQ: React.FC = () => {
     {
       id: 1,
       question:
-        'IS IT POSSIBLE TO GET A PHYSICAL COPY OF THE NFT "MY PET HOOLIGAN"?',
+        'IS IT POSSIBLE TO GET A PHYSICAL COPY OF THE NFT "MY PET Grumpy"?',
       answer:
         "Currently, our NFTs exist as digital assets on the blockchain. However, we are exploring options for physical merchandise and collectibles for NFT holders.",
     },
@@ -60,67 +60,184 @@ const FAQ: React.FC = () => {
 
   return (
     <>
+      <style jsx>{`
+        section {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+        /* Large faded background text */
+        .bg-faded-text {
+          top: 3rem;
+          font-size: clamp(4rem, 12vw, 8rem);
+          line-height: 1.1;
+          white-space: pre-line;
+          user-select: none;
+          pointer-events: none;
+          text-align: center;
+          width: 100%;
+          color: rgba(107, 114, 128, 0.3); /* same gray-700 at 30% */
+          font-weight: 800;
+          letter-spacing: 0.1em;
+          position: absolute;
+          z-index: 0;
+          font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        /* FAQ Title */
+        .faq-title {
+          margin-top: 9rem;
+          font-size: 5rem;
+          font-weight: 800;
+          color: ${pink};
+          user-select: none;
+          font-family: ${rockSalt.style?.fontFamily || "cursive"};
+          z-index: 10;
+        }
+
+        /* FAQ list container */
+        .faq-list {
+          max-width: 768px; /* same max-w-3xl ~768px */
+          margin: 0 auto;
+          width: 100%;
+          z-index: 10;
+          margin-top: 3rem;
+        }
+
+        /* FAQ question */
+        .faq-question {
+          font-weight: 800;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: white;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 1.125rem; /* text-lg */
+        }
+
+        .faq-toggle-icon {
+          font-size: 1.875rem; /* text-3xl */
+          font-weight: 900;
+          color: ${lime};
+          user-select: none;
+          flex-shrink: 0;
+        }
+
+        /* Answer container with original padding-left and animations */
+        .faq-answer {
+          overflow: hidden;
+          transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+          max-height: 0;
+          opacity: 0;
+          padding-left: 40%; /* keep your original !pl-[40%] */
+        }
+        .faq-answer.open {
+          max-height: 10rem;
+          opacity: 1;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Horizontal lines */
+        hr {
+          margin-top: 0.75rem;
+          border-color: rgba(107, 114, 128, 0.5);
+        }
+
+        /* Responsive fixes */
+        @media (max-width: 640px) {
+          section {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+          }
+          .bg-faded-text {
+            font-size: 3.5rem;
+            top: 2rem;
+            letter-spacing: 0.05em;
+          }
+          .faq-title {
+            margin-top: 6rem;
+            font-size: 3rem;
+            letter-spacing: 0.05em;
+          }
+          .faq-list {
+            max-width: 100%;
+            margin-top: 2rem;
+          }
+          .faq-question {
+            font-size: 1rem;
+          }
+          .faq-toggle-icon {
+            font-size: 1.5rem;
+          }
+          .faq-answer {
+            padding-left: 1.5rem !important; /* reduce padding on small screen for answer */
+            max-height: 15rem !important;
+          }
+          .faq-answer.open {
+            max-height: 15rem !important;
+            margin-bottom: 1rem;
+          }
+          hr {
+            margin-top: 0.5rem;
+          }
+        }
+      `}</style>
+
       <section className="min-h-screen bg-black text-white py-20 px-6 relative flex flex-col items-center">
         {/* Large faded background text */}
-        <div
-          className="absolute top-3 text-gray-700 opacity-30 font-extrabold tracking-widest text-center pointer-events-none select-none"
-          style={{
-            fontSize: "clamp(4rem, 12vw, 8rem)",
-            zIndex: 0,
-          }}
-        >
-          FREQUENTLY<br />ASKED
-        </div>
+        <div className="bg-faded-text">FREQUENTLY<br />ASKED</div>
 
         {/* Pink Rock Salt title */}
-        <span
-          className={`${rockSalt.className} text-[5rem] !mt-36 !font-extrabold text-[${pink}] z-10`}
-          style={{ color: pink }}
-        >
-          QUESTIONS
-        </span>
+        <span className="faq-title">{`QUESTIONS`}</span>
 
         {/* FAQ List */}
-        <div className="!mt-12 w-full max-w-3xl z-10">
+        <div className="faq-list">
           {faqData.map((item, idx) => (
-            <div key={item.id} className="border-t border-gray-600 !py-3">
+            <motion.div
+              key={item.id}
+              className="border-t border-gray-600 py-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
+            >
               <div
-                className="flex items-center py-6 cursor-pointer"
+                className="faq-question"
                 onClick={() => toggleItem(item.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") toggleItem(item.id);
+                }}
+                aria-expanded={isOpen(item.id)}
+                aria-controls={`faq-answer-${item.id}`}
+                id={`faq-question-${item.id}`}
               >
-                <span
-                  className="text-3xl font-bold !mr-6 select-none"
-                  style={{ color: lime }}
-                >
-                  {isOpen(item.id) ? "-" : "+"}
-                </span>
-
-                {/* Question Text */}
-                <span className="font-extrabold tracking-wide text-white text-lg md:text-xl uppercase">
-                  {item.question}
-                </span>
+                <span className="faq-toggle-icon">{isOpen(item.id) ? "−" : "+"}</span>
+                <span>{item.question}</span>
               </div>
 
-              {/* Animated Answer */}
               <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out max-w-2xl !pl-[40%] ${isOpen(item.id) ? "max-h-40 opacity-100 mb-6" : "max-h-0 opacity-0"
-                  }`}
+                id={`faq-answer-${item.id}`}
+                aria-labelledby={`faq-question-${item.id}`}
+                className={`faq-answer ${isOpen(item.id) ? "open" : ""}`}
               >
-                <p className="text-gray-400 text-sm !font-bold">
-                  {item.answer}
-                </p>
+                <p className="text-gray-400 text-sm font-bold">{item.answer}</p>
               </div>
 
               {/* Last Divider */}
-              {idx === faqData.length - 1 && (
+              {idx === faqData.length - 1 ? (
                 <div className="border-t border-gray-600"></div>
+              ) : (
+                <hr />
               )}
-              <hr className="!mt-3" />
-            </div>
-
+            </motion.div>
           ))}
         </div>
       </section>
+
       {/* Join Our Community Section */}
       <JOC />
     </>

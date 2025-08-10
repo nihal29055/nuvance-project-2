@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HOOLIGAN - NFT Collection",
+  title: "Grumpy - NFT Collection",
   description:
     "Become a part of an exclusive community of 10,000 characters. Hooligan is not just an NFT, but its own world waiting for its owner.",
 };
