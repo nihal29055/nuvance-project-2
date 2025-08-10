@@ -22,13 +22,12 @@ body {
 }
 
 .bunny-hidden {
-  transform: translate(-33%, 120%);
   opacity: 0;
+  /* remove transform */
 }
 
 @keyframes bunnyRise {
   0% {
-    transform: translate(-33%, 120%);
     opacity: 0;
   }
 
@@ -37,7 +36,6 @@ body {
   }
 
   100% {
-    transform: translate(-33%, 0%);
     opacity: 1;
   }
 }
@@ -45,7 +43,6 @@ body {
 .bunny-rise {
   animation: bunnyRise 1.8s ease-out forwards;
 }
-
 /* Blinking cursor */
 @keyframes blink {
 
@@ -122,3 +119,42 @@ body {
   background-color: rgba(251, 253, 247, 0.1);
   box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
 }
+
+ /* Mobile styles */
+        @media (max-width: 640px) {
+          .roadmap-item {
+            /* width: 100%; */
+            margin: 1.5rem auto !important;
+            text-align: left !important;
+          }
+          .roadmap-title {
+            display: none !important;
+          }
+          .roadmap-phone-title {
+            display: block !important;
+          }
+          .decorative-dot {
+            display: none !important;
+          }
+        }
+
+        /* Desktop styles */
+        @media (min-width: 641px) {
+          .roadmap-phone-title {
+            display: none !important;
+          }
+          .roadmap-item {
+            position: absolute !important;
+          }
+        }
+        @media (max-width: 640px) {
+          body {
+            cursor: default !important; /* Restore default cursor */
+          }
+          .custom-cursor-root {
+            cursor: default !important; /* Make sure no none cursor here */
+          }
+          .custom-cursor {
+            display: none !important; /* Hide the custom cursor */
+          }
+        }

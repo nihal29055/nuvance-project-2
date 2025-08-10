@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Rock_Salt } from "next/font/google";
 import { motion } from "framer-motion";
-import JOC from "../components/JoinOurCommunity";
 
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
@@ -61,11 +60,11 @@ const FAQ: React.FC = () => {
   return (
     <>
       <style jsx>{`
+        /* YOUR ORIGINAL STYLES EXACTLY AS BEFORE */
         section {
           padding-left: 1.5rem;
           padding-right: 1.5rem;
         }
-        /* Large faded background text */
         .bg-faded-text {
           top: 3rem;
           font-size: clamp(4rem, 12vw, 8rem);
@@ -75,15 +74,13 @@ const FAQ: React.FC = () => {
           pointer-events: none;
           text-align: center;
           width: 100%;
-          color: rgba(107, 114, 128, 0.3); /* same gray-700 at 30% */
+          color: rgba(107, 114, 128, 0.3);
           font-weight: 800;
           letter-spacing: 0.1em;
           position: absolute;
           z-index: 0;
           font-family: 'Arial Black', Arial, sans-serif;
         }
-
-        /* FAQ Title */
         .faq-title {
           margin-top: 9rem;
           font-size: 5rem;
@@ -93,17 +90,13 @@ const FAQ: React.FC = () => {
           font-family: ${rockSalt.style?.fontFamily || "cursive"};
           z-index: 10;
         }
-
-        /* FAQ list container */
         .faq-list {
-          max-width: 768px; /* same max-w-3xl ~768px */
+          max-width: 768px;
           margin: 0 auto;
           width: 100%;
           z-index: 10;
           margin-top: 3rem;
         }
-
-        /* FAQ question */
         .faq-question {
           font-weight: 800;
           letter-spacing: 0.1em;
@@ -113,38 +106,31 @@ const FAQ: React.FC = () => {
           display: flex;
           align-items: center;
           gap: 1rem;
-          font-size: 1.125rem; /* text-lg */
+          font-size: 1.125rem;
         }
-
         .faq-toggle-icon {
-          font-size: 1.875rem; /* text-3xl */
+          font-size: 1.875rem;
           font-weight: 900;
           color: ${lime};
           user-select: none;
           flex-shrink: 0;
         }
-
-        /* Answer container with original padding-left and animations */
         .faq-answer {
           overflow: hidden;
           transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
           max-height: 0;
           opacity: 0;
-          padding-left: 40%; /* keep your original !pl-[40%] */
+          padding-left: 40%;
         }
         .faq-answer.open {
           max-height: 10rem;
           opacity: 1;
           margin-bottom: 1.5rem;
         }
-
-        /* Horizontal lines */
         hr {
           margin-top: 0.75rem;
           border-color: rgba(107, 114, 128, 0.5);
         }
-
-        /* Responsive fixes */
         @media (max-width: 640px) {
           section {
             padding-left: 2rem;
@@ -173,7 +159,7 @@ const FAQ: React.FC = () => {
             font-size: 1.5rem;
           }
           .faq-answer {
-            padding-left: 1.5rem !important; /* reduce padding on small screen for answer */
+            padding-left: 1.5rem !important;
             max-height: 15rem !important;
           }
           .faq-answer.open {
@@ -186,22 +172,44 @@ const FAQ: React.FC = () => {
         }
       `}</style>
 
-      <section className="min-h-screen bg-black text-white py-20 px-6 relative flex flex-col items-center">
-        {/* Large faded background text */}
-        <div className="bg-faded-text">FREQUENTLY<br />ASKED</div>
+      <motion.section
+        className="min-h-screen bg-black text-white py-20 px-6 relative flex flex-col items-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* Large faded background text container */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 0.3, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{ width: "100%" }}
+        >
+          <div className="bg-faded-text">FREQUENTLY<br />ASKED</div>
+        </motion.div>
 
-        {/* Pink Rock Salt title */}
-        <span className="faq-title">{`QUESTIONS`}</span>
+        {/* FAQ Title container */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
+          <span className="faq-title">QUESTIONS</span>
+        </motion.div>
 
         {/* FAQ List */}
-        <div className="faq-list">
+        <div className="faq-list !py-20">
           {faqData.map((item, idx) => (
             <motion.div
               key={item.id}
               className="border-t border-gray-600 py-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
               <div
                 className="faq-question"
@@ -227,7 +235,6 @@ const FAQ: React.FC = () => {
                 <p className="text-gray-400 text-sm font-bold">{item.answer}</p>
               </div>
 
-              {/* Last Divider */}
               {idx === faqData.length - 1 ? (
                 <div className="border-t border-gray-600"></div>
               ) : (
@@ -236,10 +243,7 @@ const FAQ: React.FC = () => {
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* Join Our Community Section */}
-      <JOC />
+      </motion.section>
     </>
   );
 };

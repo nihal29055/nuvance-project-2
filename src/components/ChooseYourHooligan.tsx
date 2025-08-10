@@ -19,6 +19,7 @@ interface HooliganNFT {
 
 export default function ChooseYourHooligan() {
   const pink = "#bd027b";
+
   const hooligans: HooliganNFT[] = [
     { id: "#5677", price: "10.266 WETH", image: "/images/photo_1_2025-08-01_23-23-17.jpg" },
     { id: "#9823", price: "0.398 ETH", image: "/images/photo_2_2025-08-01_23-23-17.jpg" },
@@ -31,6 +32,9 @@ export default function ChooseYourHooligan() {
     { id: "#1107", price: "—", image: "/images/photo_9_2025-08-01_23-23-17.jpg" },
     { id: "#9031", price: "—", image: "/images/photo_10_2025-08-01_23-23-17.jpg" },
     { id: "#7320", price: "—", image: "/images/photo_11_2025-08-01_23-23-17.jpg" },
+    { id: "#7320", price: "—", image: "/images/photo_12_2025-08-01_23-23-17.jpg" },
+    { id: "#7320", price: "—", image: "/images/photo_13_2025-08-01_23-23-17.jpg" },
+    { id: "#7320", price: "—", image: "/images/photo_14_2025-08-01_23-23-17.jpg" },
   ];
 
   return (
@@ -39,45 +43,35 @@ export default function ChooseYourHooligan() {
         <CVO />
       </section>
 
-      <section className="min-h-screen bg-black text-white text-center flex flex-col items-center py-2 relative px-4 sm:px-10">
+      <section className="min-h-screen bg-black text-white text-center flex flex-col items-center py-2 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
         {/* Title block */}
-        <div className="relative z-20 mt-20 mb-20 flex items-center justify-center flex-wrap sm:flex-nowrap gap-4">
-          <div className="absolute text-[5rem] sm:text-[8rem] font-black text-gray-800 opacity-40 select-none leading-none whitespace-pre-line">
+        <div className="relative z-20 mb-20 flex items-center justify-center flex-wrap sm:flex-nowrap gap-4">
+          <div className="absolute text-[3rem] sm:text-[8rem] font-black text-gray-800 opacity-40 select-none leading-none whitespace-pre-line">
             CHOOSE <br /> YOUR
           </div>
 
           <span
-            className={`${rockSalt.className} text-[5rem] sm:text-[8rem] font-extrabold relative z-10`}
+            className={`${rockSalt.className} text-[3rem] sm:text-[8rem] !py-10 font-extrabold relative z-10`}
             style={{ color: pink }}
           >
             Grumpy
           </span>
         </div>
 
-        {/* NFT grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 relative z-10 w-full max-w-[1100px]">
-          {hooligans.slice(0, 3).map((h) => (
-            <NFTCard key={h.id} {...h} />
-          ))}
-
-          <div className="col-span-2 sm:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-6">
-            {hooligans.slice(3, 5).map((h) => (
-              <NFTCard key={h.id} {...h} />
-            ))}
-          </div>
-
-          {hooligans.slice(5, 8).map((h) => (
-            <NFTCard key={h.id} {...h} />
-          ))}
-
-          <div className="col-span-2 sm:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-6">
-            {hooligans.slice(8, 10).map((h) => (
-              <NFTCard key={h.id} {...h} />
-            ))}
-
-            <div className="hover:bg-lime-400 flex items-center border-2 border-[#d4ff3f] justify-center font-bold hover:text-black text-lime-400 text-2xl cursor-pointer bg-black transition min-h-[15rem] text-center p-4">
-              VIEW <br />ON OPENSEA
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center w-full max-w-[1280px] px-2">
+          {hooligans.slice(0, 14).map((hooligan, index) => (
+            <div
+              key={hooligan.id + index}
+              className="h-[15rem] w-full max-w-[20rem] sm:h-[18rem] sm:w-full md:h-[20rem] md:w-full mx-auto"
+            >
+              <NFTCard {...hooligan} />
             </div>
+          ))}
+
+          <div
+            className="flex items-center justify-center border-2 border-[#d4ff3f] font-bold text-lime-400 text-2xl cursor-pointer bg-black hover:bg-lime-400 hover:text-black transition min-h-[15rem] min-w-full max-w-[20rem] sm:min-h-[18rem] sm:min-w-full md:min-h-[20rem] md:min-w-full text-center p-4 mx-auto"
+          >
+            VIEW <br />ON OPENSEA
           </div>
         </div>
       </section>
@@ -86,16 +80,12 @@ export default function ChooseYourHooligan() {
 }
 
 function NFTCard({ id, price, image }: HooliganNFT) {
-  // State to toggle overlay on mobile tap
   const [active, setActive] = useState(false);
-
-  // Detect if running on mobile screen to control click behavior
-  // We'll just always allow toggle on click — on desktop hover effect stays separate
 
   return (
     <motion.div
       onClick={() => setActive(!active)}
-      className={`bg-black border border-pink-900 p-4 relative w-full max-w-xs h-60 overflow-hidden mx-auto cursor-pointer`}
+      className="bg-black border border-pink-900 p-4 relative w-full max-w-xs h-60 overflow-hidden mx-auto cursor-pointer"
       style={{ borderWidth: "2px" }}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -103,15 +93,12 @@ function NFTCard({ id, price, image }: HooliganNFT) {
       viewport={{ once: true }}
     >
       <div className="w-full h-full relative group rounded overflow-hidden">
-        {/* Pink overlay */}
         <div
-          className={`absolute inset-0 bg-pink-500 transition-opacity duration-300 z-10 rounded
-            ${active ? "opacity-30" : "opacity-0"} 
-            hover:opacity-30
-          `}
+          className={`absolute inset-0 bg-pink-500 transition-opacity duration-300 z-10 rounded ${
+            active ? "opacity-30" : "opacity-0"
+          } hover:opacity-30`}
         ></div>
 
-        {/* Image */}
         <Image
           src={image}
           alt={id}
@@ -119,14 +106,12 @@ function NFTCard({ id, price, image }: HooliganNFT) {
           className="object-cover transition-transform duration-300 group-hover:scale-105 group-hover:blur-sm rounded"
         />
 
-        {/* Top text */}
         <p
           className={`${rockSalt.className} absolute top-1 left-2 text-sm text-white bg-black bg-opacity-50 px-2 z-20 rounded select-none`}
         >
           Grumpy {id}
         </p>
 
-        {/* Price */}
         {price !== "—" && (
           <p
             className={`${rockSalt.className} absolute bottom-1 right-2 text-pink-400 text-cm bg-black bg-opacity-50 px-2 z-20 rounded select-none`}

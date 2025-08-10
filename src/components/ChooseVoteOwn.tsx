@@ -15,14 +15,24 @@ export default function Home() {
   const [displayText, setDisplayText] = useState("");
   const [startTyping, setStartTyping] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [animationsComplete, setAnimationsComplete] = useState(false);
+
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Detect section in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && hovering) {
+        if (entry.isIntersecting) {
+          setInView(true);
           setStartTyping(true);
+        } else {
+          setInView(false);
+          setStartTyping(false);
+          setDisplayText("");
+          setHovering(false);
+          setAnimationsComplete(false);
         }
       },
       { threshold: 0.4 }
@@ -33,11 +43,11 @@ export default function Home() {
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
-  }, [hovering]);
+  }, []);
 
   // Typing effect
   useEffect(() => {
-    if (startTyping) {
+    if (startTyping && !hovering) {
       let index = 0;
       setDisplayText("");
       const typingInterval = setInterval(() => {
@@ -48,13 +58,26 @@ export default function Home() {
         }
       }, 20);
       return () => clearInterval(typingInterval);
+    } else {
+      setDisplayText("");
     }
-  }, [startTyping, paragraphText]);
+  }, [startTyping, hovering, paragraphText]);
+
+  // VO and TE positions: only shift if animationsComplete && inView && !hovering
+  const shiftDistance = "8vw";
+
+  const voX =
+    animationsComplete && inView && !hovering ? `-${shiftDistance}` : "0";
+  const teX = animationsComplete && inView && !hovering ? shiftDistance : "0";
+
+  const paraWidth = animationsComplete && inView && !hovering ? "30vw" : "0";
+  const paraOpacity = animationsComplete && inView && !hovering ? 1 : 0;
 
   return (
     <div
       ref={sectionRef}
-      className={`bg-black min-h-screen flex items-center !px-10 ${montserrat.className} overflow-x-hidden`}
+      className={`bg-black min-h-screen flex flex-col items-start pt-10 !px-10 ${montserrat.className} overflow-x-hidden`}
+      style={{ minHeight: "110vh" }}
     >
       <div className="w-full text-[#d4ff3f] font-bold uppercase leading-none">
         {/* Row 1 - CHOOSE */}
@@ -64,6 +87,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-[15vw] text-left"
+          style={{ marginTop: 0 }}
         >
           CHOOSE
         </motion.div>
@@ -74,48 +98,35 @@ export default function Home() {
           whileInView={{ x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-          className="flex items-center justify-center gap-[0.5vw] mt-[-2vw] relative"
+          className="flex items-center justify-center gap-0 relative"
           onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => {
-            setHovering(false);
-            setDisplayText("");
-            setStartTyping(false);
-          }}
+          onMouseLeave={() => setHovering(false)}
+          style={{ marginTop: 0 }}
         >
           {/* VO */}
           <motion.span
-            animate={hovering ? { x: "-1.5vw" } : { x: 0 }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut",
-              onComplete: () => {
-                if (hovering) setStartTyping(true);
-              },
-            }}
-            className="text-[15vw] leading-none"
+            animate={{ x: voX }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-[15vw] leading-none select-none"
           >
             VO
           </motion.span>
 
-          {/* Paragraph (center) */}
+          {/* Paragraph */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, width: 0 }}
-            animate={
-              hovering
-                ? { opacity: 1, scale: 1, width: "15vw" }
-                : { opacity: 0, scale: 0.9, width: 0 }
-            }
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-white text-[0.7vw] leading-snug min-h-[6vw] text-center overflow-hidden"
+            animate={{ width: paraWidth, opacity: paraOpacity }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-white text-[0.7vw] leading-snug whitespace-normal overflow-hidden text-center select-none"
+            style={{ minHeight: "6vw", margin: hovering ? "0" : "0 1vw" }}
           >
             {displayText}
           </motion.div>
 
           {/* TE */}
           <motion.span
-            animate={hovering ? { x: "1.5vw" } : { x: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-[15vw] leading-none"
+            animate={{ x: teX }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-[15vw] leading-none select-none"
           >
             TE
           </motion.span>
@@ -123,11 +134,20 @@ export default function Home() {
 
         {/* Row 3 - Grid + OWN */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ x: "100%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="flex items-center gap-[2vw] mt-[-2vw] justify-end"
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+            delay: 1.3,
+            // When OWN animation ends, set animationsComplete true
+            onComplete: () => {
+              setAnimationsComplete(true);
+            },
+          }}
+          className="flex items-center gap-[2vw] justify-end"
+          style={{ marginTop: 0 }}
         >
           {/* Grid */}
           <div
