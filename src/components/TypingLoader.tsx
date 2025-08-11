@@ -51,7 +51,8 @@ export default function TypingLoader({ onFinish }: { onFinish: () => void }) {
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-black text-white px-4">
-      <div className="flex flex-col items-center space-y-4 text-center max-w-4xl">
+      {/* Parent relative with extra bottom padding for spacing */}
+      <div className="relative flex flex-col items-center space-y-4 text-center max-w-4xl pb-[120px]">
         {displayedLines.map((line, idx) => (
           <p
             key={idx}
@@ -65,8 +66,16 @@ export default function TypingLoader({ onFinish }: { onFinish: () => void }) {
             {currentLine === idx && <span className="animate-blink">|</span>}
           </p>
         ))}
+
         {showLoading && (
-          <p className="text-xl md:text-2xl font-semibold text-yellow-400 animate-pulse">
+          <p
+            className="text-xl md:text-2xl font-semibold animate-pulse absolute bottom-[-200px]"
+            style={{
+              color: "#B3FF00",
+              textShadow:
+                "0 0 6px #B3FF00, 0 0 10px #B3FF00, 0 0 20px #B3FF00, 0 0 30px #A0FF00",
+            }}
+          >
             LOADING<span className="dot-animate"></span>
           </p>
         )}

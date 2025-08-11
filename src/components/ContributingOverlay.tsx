@@ -58,33 +58,27 @@ shelters for animals in need
 during the war. This is our way of 
 contri`;
 
-  // Ref for the section to observe visibility
+  // Section visibility tracking
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.3, // trigger when 30% of section is visible
-      }
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { root: null, rootMargin: "0px", threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
+  // Typing animations
   const typedTop = useTypingEffect(topParagraphText, 25, isVisible);
   const typedBottom = useTypingEffect(bottomParagraphText, 20, isVisible);
+  const typedContributing = useTypingEffect("CONTRIBUTING", 80, isVisible);
 
   return (
     <section
@@ -99,12 +93,12 @@ contri`;
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
         variants={fadeUp}
-        style={{ minHeight: "10rem" }} // reserve vertical space so text doesn't jump
+        style={{ minHeight: "10rem" }}
       >
         {typedTop}
       </motion.p>
 
-      {/* Big Title */}
+      {/* Big Title with "CONTRIBUTING" typed below */}
       <motion.div
         className={`${styles.titleBlock} phone-responsive-titleblock`}
         initial="hidden"
@@ -114,8 +108,16 @@ contri`;
       >
         <span className={`${styles.discordTag} ${styles.tag}`}>DISCORD</span>
         <h1 className={`${styles.title} ${rockSalt.className}`}>
-          WAY OF <span className={styles.twitterTag}>TWITTER</span> CONTRIBUTING
+          WAY OF <span className={styles.twitterTag}>TWITTER</span>
         </h1>
+        <div
+          className={`${styles.title} ${rockSalt.className}`}
+          style={{ minHeight: "2.5rem" }}
+        >
+          {typedContributing || (
+            <span style={{ visibility: "hidden" }}>CONTRIBUTING</span>
+          )}
+        </div>
         <span className={`${styles.instagramTag} ${styles.tag}`}>INSTAGRAM</span>
       </motion.div>
 

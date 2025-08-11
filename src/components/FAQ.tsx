@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Rock_Salt } from "next/font/google";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
@@ -18,6 +18,28 @@ const FAQ: React.FC = () => {
   const pink = "#fb8fc1";
   const lime = "#C6FF5F";
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const [typedText, setTypedText] = useState("");
+  const fullText = "QUESTIONS";
+
+  // Ref for the section container to detect inView
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" }); // triggers a bit early
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100); // typing speed 100ms per char
+
+    return () => clearInterval(timer);
+  }, [isInView]);
 
   const faqData: FAQItem[] = [
     {
@@ -60,7 +82,6 @@ const FAQ: React.FC = () => {
   return (
     <>
       <style jsx>{`
-        /* YOUR ORIGINAL STYLES EXACTLY AS BEFORE */
         section {
           padding-left: 1.5rem;
           padding-right: 1.5rem;
@@ -83,12 +104,35 @@ const FAQ: React.FC = () => {
         }
         .faq-title {
           margin-top: 9rem;
-          font-size: 5rem;
+          font-size: 5.5rem;
           font-weight: 800;
           color: ${pink};
           user-select: none;
           font-family: ${rockSalt.style?.fontFamily || "cursive"};
           z-index: 10;
+          white-space: pre; /* keep spacing consistent */
+          display: inline-block;
+          position: relative;
+        }
+        /* blinking cursor */
+        .cursor {
+          display: inline-block;
+          width: 0.15em;
+          background-color: ${pink};
+          margin-left: 2px;
+          animation: blink 1s steps(2, start) infinite;
+          position: absolute;
+          right: -0.2em;
+          top: 0;
+          bottom: 0;
+        }
+        @keyframes blink {
+          0%, 50% {
+            opacity: 1;
+          }
+          51%, 100% {
+            opacity: 0;
+          }
         }
         .faq-list {
           max-width: 768px;
@@ -117,6 +161,7 @@ const FAQ: React.FC = () => {
         }
         .faq-answer {
           overflow: hidden;
+          font-weight: bold;
           transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
           max-height: 0;
           opacity: 0;
@@ -169,17 +214,23 @@ const FAQ: React.FC = () => {
           hr {
             margin-top: 0.5rem;
           }
+          /* Adjust cursor on mobile if you want */
+          .cursor {
+            right: -0.15em;
+            width: 0.12em;
+          }
         }
       `}</style>
 
       <motion.section
+        ref={sectionRef}
         className="min-h-screen bg-black text-white py-20 px-6 relative flex flex-col items-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Large faded background text container */}
+        {/* Large faded background text */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 0.3, y: 0 }}
@@ -187,17 +238,27 @@ const FAQ: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           style={{ width: "100%" }}
         >
-          <div className="bg-faded-text">FREQUENTLY<br />ASKED</div>
+          <div className="bg-faded-text">
+            FREQUENTLY
+            <br />
+            ASKED
+          </div>
         </motion.div>
 
-        {/* FAQ Title container */}
+        {/* Typing animation for "QUESTIONS" */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <span className="faq-title">QUESTIONS</span>
+          <span className="faq-title">
+            {typedText}
+            {/* Invisible remainder text to prevent layout shift */}
+            <span style={{ opacity: 0 }}>{fullText.slice(typedText.length)}</span>
+            {/* Show blinking cursor only while typing */}
+            {typedText.length < fullText.length && <span className="cursor" />}
+          </span>
         </motion.div>
 
         {/* FAQ List */}
@@ -223,7 +284,9 @@ const FAQ: React.FC = () => {
                 aria-controls={`faq-answer-${item.id}`}
                 id={`faq-question-${item.id}`}
               >
-                <span className="faq-toggle-icon">{isOpen(item.id) ? "−" : "+"}</span>
+                <span className="faq-toggle-icon">
+                  {isOpen(item.id) ? "−" : "+"}
+                </span>
                 <span>{item.question}</span>
               </div>
 
@@ -232,7 +295,9 @@ const FAQ: React.FC = () => {
                 aria-labelledby={`faq-question-${item.id}`}
                 className={`faq-answer ${isOpen(item.id) ? "open" : ""}`}
               >
-                <p className="text-gray-400 text-sm font-bold">{item.answer}</p>
+                <p className="text-gray-400 text-sm font-bold">
+                  {item.answer}
+                </p>
               </div>
 
               {idx === faqData.length - 1 ? (

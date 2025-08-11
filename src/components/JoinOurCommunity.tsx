@@ -13,6 +13,12 @@ export default function HooliganUI() {
   return (
     <>
       <style jsx>{`
+      *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+    border: 0 solid;
+}
         @media (max-width: 640px) {
           /* Section min-height badhao phone ke liye */
           section,
@@ -22,7 +28,7 @@ export default function HooliganUI() {
 
           /* Grumpy text aur chhota karo aur center karo */
           .main-text {
-            font-size: 1.8rem !important; /* aur chhota */
+            font-size: 6rem !important; /* aur chhota */
             top: 38% !important; /* thoda upar */
             bottom: auto !important;
             left: 50% !important;
@@ -181,6 +187,7 @@ export default function HooliganUI() {
         />
 
         {/* Footer */}
+        {/* Footer */}
         <motion.div
           className="absolute bottom-4 w-full flex items-center justify-between px-6 text-xs text-gray-500 footer"
           initial={{ opacity: 0, y: 20 }}
@@ -210,8 +217,8 @@ export default function HooliganUI() {
               <path d="M95 125 Q100 135 105 125" />
             </svg>
           </div>
-          <div>
-            <a href="#" className="hover:underline mr-4">
+          <div className="flex space-x-6">
+            <a href="#" className="hover:underline">
               Terms & Conditions
             </a>
             <a href="#" className="hover:underline">
@@ -219,6 +226,7 @@ export default function HooliganUI() {
             </a>
           </div>
         </motion.div>
+
       </section>
     </>
   );

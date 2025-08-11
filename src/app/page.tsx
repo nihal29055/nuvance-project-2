@@ -22,11 +22,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMenuText, setShowMenuText] = useState(false);
 
-  // Bunny motion states
   const [bunnyRiseStarted, setBunnyRiseStarted] = useState(false);
   const [bunnyRiseComplete, setBunnyRiseComplete] = useState(false);
 
-  // Responsive isMobile state with resize listener
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth < 640 : false
   );
@@ -56,7 +54,6 @@ export default function Home() {
     }
   }, [phase]);
 
-  // Bunny animation complete handler
   const onBunnyAnimationComplete = () => {
     setBunnyRiseComplete(true);
   };
@@ -100,21 +97,19 @@ export default function Home() {
     fixed: { opacity: 1, y: "0%", transition: { duration: 0 } },
   };
 
-  // Typing animation state for paragraph
   const fullText = `Discover the charm of your very own Grumpy companion.
 Each one is unique and brings joy in unexpected ways.
 Join the community of proud owners who embrace the quirky,
-lovable spirit of Grumpy every day.
 Ready to make one yours?`;
 
   const [displayedText, setDisplayedText] = useState("");
   useEffect(() => {
     if (phase !== "hero") {
-      setDisplayedText(""); // reset if leaving hero phase
+      setDisplayedText("");
       return;
     }
     let index = 0;
-    const typingSpeed = 40; // ms per character
+    const typingSpeed = 40;
     const interval = setInterval(() => {
       setDisplayedText(fullText.slice(0, index + 1));
       index++;
@@ -126,11 +121,10 @@ Ready to make one yours?`;
 
   return (
     <div className="custom-cursor-root relative bg-black min-h-screen text-white">
-      {/* MENU BUTTON - FIXED: always show on hero phase and menu closed */}
       {phase === "hero" && !menuOpen && (
         <button
           onClick={() => setMenuOpen(true)}
-          className="fixed text-gray-400 text-xs sm:text-sm tracking-widest z-[9999] hover:text-gray-200 transition-colors top-3 sm:top-5 right-4 sm:right-5 cursor-pointer select-none pointer-events-auto opacity-100"
+          className="fixed text-gray-400 font-bold text-xs sm:text-xs tracking-widest z-[9999] hover:text-gray-200 transition-colors top-3 sm:top-5 right-4 sm:right-5 cursor-pointer select-none pointer-events-auto opacity-100"
           aria-label="Open Menu"
         >
           MENU
@@ -151,9 +145,9 @@ Ready to make one yours?`;
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              fontSize="40"
-              className={`${rockSalt.className} sm:text-[100px]`}
-              fill="none"
+              fontSize="32"
+              className={`${rockSalt.className} sm:text-[130px]`}
+              fill="#fb8fc1"
               stroke="#fb8fc1"
               strokeWidth="3"
               strokeDasharray="1500"
@@ -177,19 +171,17 @@ Ready to make one yours?`;
           className="relative w-full h-screen flex items-center justify-center overflow-hidden px-4"
           aria-label="Hero section"
         >
-          {/* Background text with fade+scale animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute left-1/2 top-[30%] sm:top-[10%] transform -translate-x-1/2 -translate-y-1/6
+            className="absolute left-1/2 top-[30%] sm:top-[2%] transform -translate-x-1/2 -translate-y-1/6
               text-[40px] sm:text-[120px] lg:text-[220px] font-extrabold text-white/10 whitespace-nowrap select-none pointer-events-none"
-            style={{ fontFamily: "'Rock Salt', cursive" }}
+            style={{ fontFamily: "sans-serif" }}
           >
             MY PET
           </motion.div>
 
-          {/* Foreground SVG title */}
           <svg
             viewBox="0 0 800 200"
             className="w-full max-w-[90%] sm:max-w-[80%] h-auto absolute z-10"
@@ -200,18 +192,16 @@ Ready to make one yours?`;
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              fontSize="40"
-              className={`${rockSalt.className} sm:text-[100px]`}
-              fill="#fb8fc1"       // Fill color
-              stroke="#fb8fc1"     // Stroke color
-              strokeWidth="3"      // Stroke thickness
+              fontSize="32"
+              className={`${rockSalt.className} sm:text-[130px]`}
+              fill="#fb8fc1"
+              stroke="#fb8fc1"
+              strokeWidth="3"
             >
               Grumpy
             </text>
-
           </svg>
 
-          {/* Bunny with framer-motion */}
           <motion.div
             className="absolute left-1/2 sm:left-[35%] z-20 -translate-x-1/2 sm:-translate-x-1"
             style={{
@@ -236,7 +226,7 @@ Ready to make one yours?`;
               alt="bunny"
               width={700}
               height={1500}
-              className="w-[160px] sm:w-[400px] lg:w-[700px] h-auto object-contain"
+              className="w-[160px] sm:w-[400px] lg:w-[640px] h-auto object-contain"
               priority
             />
           </motion.div>
@@ -246,12 +236,16 @@ Ready to make one yours?`;
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-            className="absolute bottom-4 sm:bottom-10 right-1/2 sm:right-14 translate-x-1/2 sm:translate-x-0 flex flex-col items-center space-y-3 sm:space-y-4 z-30 select-none max-w-[220px] sm:max-w-[300px]"
+            className={`absolute right-1/2 sm:right-14 translate-x-1/2 sm:translate-x-0 flex flex-col space-y-3 sm:space-y-4 z-30 select-none max-w-[220px] sm:max-w-[300px] ${isMobile ? "items-start" : "items-center"
+              }`}
             style={{
-              bottom: isMobile ? 30 : undefined,
+              bottom: isMobile ? -20 : 30, // more bottom spacing on mobile
             }}
           >
-            <p className="text-[9px] sm:text-xs text-gray-400 text-start leading-snug whitespace-pre-line">
+            <p
+              className={`text-[10.5px] font-bold leading-relaxed whitespace-pre-line max-w-3xl mx-auto ${isMobile ? "text-left" : "text-center"
+                } text-gray-400`}
+            >
               {displayedText}
             </p>
 
@@ -268,16 +262,18 @@ Ready to make one yours?`;
                 xmlns="http://www.w3.org/2000/svg"
                 className="hover:opacity-80 transition-opacity duration-300 w-[260px] sm:w-[380px] lg:w-[530px]"
               >
-                <path
-                  d="M50 85 C45 23, 92 20, 150 45 C220 70, 460 35, 520 85 C480 140, 380 145, 305 140 C215 135, 125 155, 50 85 Z"
+                {/* Perfect Oval */}
+                <ellipse
+                  cx="265"         /* center x */
+                  cy="85"          /* center y */
+                  rx="235"         /* radius x (width/2 - stroke) */
+                  ry="70"          /* radius y (height/2 - stroke) */
                   stroke="#B3FF00"
                   strokeWidth="5"
                   fill="transparent"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
                 />
                 <text
-                  x="280"
+                  x="265"
                   y="90"
                   fill="#B3FF00"
                   fontSize="14"
@@ -293,11 +289,52 @@ Ready to make one yours?`;
                 </text>
               </svg>
             </a>
+
           </motion.div>
         </div>
       )}
 
-      {/* Sections container with spacing */}
+      {phase === "hero" && (
+        <motion.div
+          className="fixed bottom-10 left-6 flex flex-col items-center cursor-pointer select-none"
+          initial={{ y: 0 }}
+          animate={{ y: [0, -15, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          aria-label="Scroll down"
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            const nextSection = document.getElementById("about");
+            nextSection?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          <motion.span
+            className="arrow text-[#C0C0C0] text-[3vw] mb-[-8px]"
+            animate={{ y: [0, 6, 0] }}
+            transition={{
+              duration: 0.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              repeatDelay: 0.15,
+            }}
+          >
+            ▼
+          </motion.span>
+          <motion.span
+            className="arrow text-[#C0C0C0] text-[3vw]"
+            animate={{ y: [0, 6, 0] }}
+            transition={{
+              duration: 0.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              repeatDelay: 0.3,
+            }}
+          >
+            ▼
+          </motion.span>
+        </motion.div>
+      )}
+
       {phase === "hero" && (
         <div
           className="sections-container"

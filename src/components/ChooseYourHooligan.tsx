@@ -51,7 +51,7 @@ export default function ChooseYourHooligan() {
           </div>
 
           <span
-            className={`${rockSalt.className} text-[3rem] sm:text-[8rem] !py-10 font-extrabold relative z-10 text-[#fb8fc1]`}
+            className={`${rockSalt.className} text-[5rem] sm:text-[8rem] !py-10 font-extrabold relative z-10 text-[#fb8fc1]`}
           >
             Grumpy
           </span>
@@ -67,12 +67,16 @@ export default function ChooseYourHooligan() {
             </div>
           ))}
 
+          {/* VIEW ON OPENSEA tile */}
           <div
-            className="flex items-center justify-center border-2 border-[#d4ff3f] font-bold text-lime-400 text-2xl cursor-pointer bg-black hover:bg-lime-400 hover:text-black transition min-h-[15rem] min-w-full max-w-[20rem] sm:min-h-[18rem] sm:min-w-full md:min-h-[20rem] md:min-w-full text-center p-4 mx-auto"
+            className="bg-black border border-pink-900 p-4 relative w-full h-full max-w-[20rem] overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-lime-400 text-2xl transition hover:bg-lime-400 hover:text-black rounded"
+            style={{ borderWidth: "2px" }}
           >
-            VIEW <br />ON OPENSEA
+            VIEW <br /> ON OPENSEA
           </div>
+
         </div>
+
       </section>
     </>
   );
@@ -84,7 +88,7 @@ function NFTCard({ id, price, image }: HooliganNFT) {
   return (
     <motion.div
       onClick={() => setActive(!active)}
-      className="bg-black border border-pink-900 p-4 relative w-full max-w-xs h-60 overflow-hidden mx-auto cursor-pointer"
+      className="bg-black border border-pink-900 p-4 relative w-full h-full overflow-hidden mx-auto cursor-pointer"
       style={{ borderWidth: "2px" }}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}

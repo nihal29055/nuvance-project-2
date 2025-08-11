@@ -77,7 +77,7 @@ export default function Home() {
     <div
       ref={sectionRef}
       className={`bg-black min-h-screen flex flex-col items-start pt-10 !px-10 ${montserrat.className} overflow-x-hidden`}
-      style={{ minHeight: "110vh" }}
+      style={{ minHeight: "100vh" }}
     >
       <div className="w-full text-[#d4ff3f] font-bold uppercase leading-none">
         {/* Row 1 - CHOOSE */}

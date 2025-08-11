@@ -131,6 +131,7 @@ body {
             display: none !important;
           }
           .roadmap-phone-title {
+            font-size: 3.8rem;
             display: block !important;
           }
           .decorative-dot {
@@ -141,6 +142,7 @@ body {
         /* Desktop styles */
         @media (min-width: 641px) {
           .roadmap-phone-title {
+            font-size: 5rem;
             display: none !important;
           }
           .roadmap-item {
@@ -158,3 +160,12 @@ body {
             display: none !important; /* Hide the custom cursor */
           }
         }
+        @media (max-width: 640px) {
+          .text-left {
+            text-align: left !important;
+          }
+          .items-start {
+            align-items: flex-start !important;
+          }
+        }
+        
