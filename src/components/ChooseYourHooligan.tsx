@@ -51,8 +51,7 @@ export default function ChooseYourHooligan() {
           </div>
 
           <span
-            className={`${rockSalt.className} text-[3rem] sm:text-[8rem] !py-10 font-extrabold relative z-10`}
-            style={{ color: pink }}
+            className={`${rockSalt.className} text-[3rem] sm:text-[8rem] !py-10 font-extrabold relative z-10 text-[#fb8fc1]`}
           >
             Grumpy
           </span>
@@ -94,9 +93,8 @@ function NFTCard({ id, price, image }: HooliganNFT) {
     >
       <div className="w-full h-full relative group rounded overflow-hidden">
         <div
-          className={`absolute inset-0 bg-pink-500 transition-opacity duration-300 z-10 rounded ${
-            active ? "opacity-30" : "opacity-0"
-          } hover:opacity-30`}
+          className={`absolute inset-0 bg-pink-500 transition-opacity duration-300 z-10 rounded ${active ? "opacity-30" : "opacity-0"
+            } hover:opacity-30`}
         ></div>
 
         <Image

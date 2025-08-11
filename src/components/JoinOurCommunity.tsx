@@ -126,8 +126,7 @@ export default function HooliganUI() {
           style={{ fontSize: "5rem", top: "auto", bottom: "auto" }}
         >
           <span
-            className={`${rockSalt.className} !font-extrabold`}
-            style={{ color: pink }}
+            className={`${rockSalt.className} !font-extrabold text-[#fb8fc1]`}
           >
             Grumpy
           </span>

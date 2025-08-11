@@ -23,12 +23,11 @@ const Roadmap: React.FC = () => {
 
         {/* Big desktop ROADMAP */}
         <div
-          className={`${rockSalt.className} roadmap-title absolute text-[8rem] font-extrabold z-10`}
+          className={`${rockSalt.className} roadmap-title absolute text-[8rem] font-extrabold z-10 text-[#fb8fc1]`}
           style={{
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)",
-            color: pink,
+            transform: "translate(-50%, -50%)"
           }}
         >
           ROADMAP
@@ -36,8 +35,7 @@ const Roadmap: React.FC = () => {
 
         {/* Mobile ROADMAP */}
         <h2
-          className={`${rockSalt.className} roadmap-phone-title hidden text-4xl font-extrabold text-center mb-8`}
-          style={{ color: pink }}
+          className={`${rockSalt.className} roadmap-phone-title hidden text-4xl font-extrabold text-center mb-8 text-[#fb8fc1]`}
         >
           ROADMAP
         </h2>

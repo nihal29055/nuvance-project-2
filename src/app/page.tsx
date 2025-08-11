@@ -140,7 +140,7 @@ Ready to make one yours?`;
       {phase === "typing" && <TypingLoader onFinish={() => setPhase("svg")} />}
 
       {phase === "svg" && (
-        <div className="relative w-full h-screen flex items-center justify-center px-4">
+        <div className="relative w-full h-screen flex items-center justify-center px-4 text-[#fb8fc1]">
           <svg
             viewBox="0 0 800 200"
             className="w-full max-w-[90%] sm:max-w-[80%] h-auto"
@@ -154,7 +154,7 @@ Ready to make one yours?`;
               fontSize="40"
               className={`${rockSalt.className} sm:text-[100px]`}
               fill="none"
-              stroke="#ff69b4"
+              stroke="#fb8fc1"
               strokeWidth="3"
               strokeDasharray="1500"
               strokeDashoffset="1500"
@@ -202,8 +202,8 @@ Ready to make one yours?`;
               textAnchor="middle"
               fontSize="40"
               className={`${rockSalt.className} sm:text-[100px]`}
-              fill="#ff69b4"       // Fill color
-              stroke="#ff69b4"     // Stroke color
+              fill="#fb8fc1"       // Fill color
+              stroke="#fb8fc1"     // Stroke color
               strokeWidth="3"      // Stroke thickness
             >
               Grumpy
