@@ -202,12 +202,13 @@ Ready to make one yours?`;
               textAnchor="middle"
               fontSize="40"
               className={`${rockSalt.className} sm:text-[100px]`}
-              fill="none"
-              stroke="#ff69b4"
-              strokeWidth="3"
+              fill="#ff69b4"       // Fill color
+              stroke="#ff69b4"     // Stroke color
+              strokeWidth="3"      // Stroke thickness
             >
               Grumpy
             </text>
+
           </svg>
 
           {/* Bunny with framer-motion */}
@@ -223,8 +224,8 @@ Ready to make one yours?`;
               bunnyRiseComplete
                 ? "fixed"
                 : bunnyRiseStarted
-                ? "rise"
-                : "hidden"
+                  ? "rise"
+                  : "hidden"
             }
             onAnimationComplete={() => {
               if (!bunnyRiseComplete) onBunnyAnimationComplete();
@@ -250,7 +251,7 @@ Ready to make one yours?`;
               bottom: isMobile ? 30 : undefined,
             }}
           >
-            <p className="text-[9px] sm:text-xs text-gray-400 text-center leading-snug whitespace-pre-line">
+            <p className="text-[9px] sm:text-xs text-gray-400 text-start leading-snug whitespace-pre-line">
               {displayedText}
             </p>
 
