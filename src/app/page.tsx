@@ -184,7 +184,7 @@ Ready to make one yours?`;
 
           <svg
             viewBox="0 0 800 200"
-            className="w-full max-w-[90%] sm:max-w-[80%] h-auto absolute z-10"
+            className="w-full max-w-[90%] sm:max-w-[80%] h-auto absolute z-0"
             xmlns="http://www.w3.org/2000/svg"
           >
             <text
@@ -203,7 +203,7 @@ Ready to make one yours?`;
           </svg>
 
           <motion.div
-            className="absolute left-1/2 sm:left-[35%] z-20 -translate-x-1/2 sm:-translate-x-1"
+            className="absolute left-1/2 sm:left-[35%] -translate-x-1/2 sm:-translate-x-1"
             style={{
               bottom: isMobile ? 250 : 1,
               position: "absolute",
@@ -221,15 +221,35 @@ Ready to make one yours?`;
               if (!bunnyRiseComplete) onBunnyAnimationComplete();
             }}
           >
-            <Image
-              src="/bunny.png"
-              alt="bunny"
-              width={700}
-              height={1500}
-              className="w-[160px] sm:w-[400px] lg:w-[640px] h-auto object-contain"
-              priority
-            />
+            <div className="relative">
+              {/* Bunny image */}
+              <Image
+                src="/bunny.png"
+                alt="bunny"
+                width={700}
+                height={1500}
+                className="relative w-[160px] sm:w-[400px] lg:w-[640px] h-auto object-contain z-10"
+                priority
+              />
+
+              {/* Grid at bottom, behind bunny */}
+              <div
+                className="absolute bottom-10 right-[10%]
+    w-[35vw] h-[7.57vw] 
+    sm:w-[45.13vw] sm:h-[7.57vw] 
+    xs:w-[50vw] xs:h-[12vw] 
+    border-2 border-lime-500 overflow-hidden -z-10"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #9bf50070 1px, transparent 1px), linear-gradient(to bottom, #9bf50070 1px, transparent 1px)",
+                  backgroundSize: "1.5vw 1.5vw",
+                  boxShadow: "inset 0 0 20px rgba(0,255,0,0.5)",
+                }}
+              ></div>
+            </div>
           </motion.div>
+
+
 
           {/* Paragraph + Button with fade+slide animation */}
           <motion.div

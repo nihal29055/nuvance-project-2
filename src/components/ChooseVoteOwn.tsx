@@ -151,7 +151,7 @@ export default function Home() {
         >
           {/* Grid */}
           <div
-            className="relative w-[35vw] h-[7vw] border-2 border-[#222] overflow-hidden"
+            className="relative w-[34.5vw] h-[7.56vw] border-2 border-[#222] overflow-hidden"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)",
