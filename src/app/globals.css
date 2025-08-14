@@ -43,6 +43,7 @@ body {
 .bunny-rise {
   animation: bunnyRise 1.8s ease-out forwards;
 }
+
 /* Blinking cursor */
 @keyframes blink {
 
@@ -120,52 +121,116 @@ body {
   box-shadow: 0 0 20px rgba(179, 255, 0, 0.4);
 }
 
- /* Mobile styles */
-        @media (max-width: 640px) {
-          .roadmap-item {
-            /* width: 100%; */
-            margin: 1.5rem auto !important;
-            text-align: left !important;
-          }
-          .roadmap-title {
-            display: none !important;
-          }
-          .roadmap-phone-title {
-            font-size: 3.8rem;
-            display: block !important;
-          }
-          .decorative-dot {
-            display: none !important;
-          }
-        }
+/* Mobile styles */
+@media (max-width: 640px) {
+  .roadmap-item {
+    /* width: 100%; */
+    margin: 1.5rem auto !important;
+    text-align: left !important;
+  }
 
-        /* Desktop styles */
-        @media (min-width: 641px) {
-          .roadmap-phone-title {
-            font-size: 5rem;
-            display: none !important;
-          }
-          .roadmap-item {
-            position: absolute !important;
-          }
-        }
-        @media (max-width: 640px) {
-          body {
-            cursor: default !important; /* Restore default cursor */
-          }
-          .custom-cursor-root {
-            cursor: default !important; /* Make sure no none cursor here */
-          }
-          .custom-cursor {
-            display: none !important; /* Hide the custom cursor */
-          }
-        }
-        @media (max-width: 640px) {
-          .text-left {
-            text-align: left !important;
-          }
-          .items-start {
-            align-items: flex-start !important;
-          }
-        }
-        
+  .roadmap-title {
+    display: none !important;
+  }
+
+  .roadmap-phone-title {
+    font-size: 3.8rem;
+    display: block !important;
+  }
+
+  .decorative-dot {
+    display: none !important;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 641px) {
+  .roadmap-phone-title {
+    font-size: 5rem;
+    display: none !important;
+  }
+
+  .roadmap-item {
+    position: absolute !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    cursor: default !important;
+    /* Restore default cursor */
+  }
+
+  .custom-cursor-root {
+    cursor: default !important;
+    /* Make sure no none cursor here */
+  }
+
+  .custom-cursor {
+    display: none !important;
+    /* Hide the custom cursor */
+  }
+}
+
+@media (max-width: 640px) {
+  .text-left {
+    text-align: left !important;
+  }
+
+  .items-start {
+    align-items: flex-start !important;
+  }
+}
+
+
+
+.menu-button {
+  padding: 1.1em 2em;
+  background: none;
+  border: 2px solid #fff;
+  font-size: 15px;
+  color: #131313;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-radius: 12px;
+  background-color: #03a903;
+  font-weight: bolder;
+  box-shadow: 0 2px 0 2px #000;
+}
+
+.menu-button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  background-color: #0073a4;
+  top: 50%;
+  left: 0;
+  transform: skewX(30deg) translate(-150%, -50%);
+  transition: all 0.5s;
+}
+
+.menu-button:hover {
+  background-color: #000;
+  color: #66FF66;
+  box-shadow: 0 2px 0 2px #0d3b66;
+}
+
+.menu-button:hover::before {
+  transform: skewX(30deg) translate(150%, -50%);
+  transition-delay: 0.1s;
+}
+
+.menu-button:active {
+  transform: scale(0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .menu-button {
+    padding: 0.8em 1.2em;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}

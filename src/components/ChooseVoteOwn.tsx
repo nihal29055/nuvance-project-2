@@ -13,7 +13,6 @@ export default function Home() {
     "Each medium has its own story and character, which gives every UI project layers of personality. A strong brand identity means delivering the same feeling to your users through consistency in the brand and experience. Layouts like this one can bring a special layer of attention and meaning to your audience.";
 
   const [displayText, setDisplayText] = useState("");
-  const [startTyping, setStartTyping] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [inView, setInView] = useState(false);
   const [animationsComplete, setAnimationsComplete] = useState(false);
@@ -26,10 +25,8 @@ export default function Home() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          setStartTyping(true);
         } else {
           setInView(false);
-          setStartTyping(false);
           setDisplayText("");
           setHovering(false);
           setAnimationsComplete(false);
@@ -45,9 +42,9 @@ export default function Home() {
     };
   }, []);
 
-  // Typing effect
+  // Typing effect — only on hover
   useEffect(() => {
-    if (startTyping && !hovering) {
+    if (hovering && inView) {
       let index = 0;
       setDisplayText("");
       const typingInterval = setInterval(() => {
@@ -61,25 +58,22 @@ export default function Home() {
     } else {
       setDisplayText("");
     }
-  }, [startTyping, hovering, paragraphText]);
+  }, [hovering, inView, paragraphText]);
 
-  // VO and TE positions: only shift if animationsComplete && inView && !hovering
   const shiftDistance = "8vw";
 
-  const voX =
-    animationsComplete && inView && !hovering ? `-${shiftDistance}` : "0";
-  const teX = animationsComplete && inView && !hovering ? shiftDistance : "0";
-
-  const paraWidth = animationsComplete && inView && !hovering ? "30vw" : "0";
-  const paraOpacity = animationsComplete && inView && !hovering ? 1 : 0;
+  // Direct hover control — no animationsComplete here
+  const voX = hovering && inView ? `-${shiftDistance}` : "0";
+  const teX = hovering && inView ? shiftDistance : "0";
+  const paraWidth = hovering && inView ? "30vw" : "0";
+  const paraOpacity = hovering && inView ? 1 : 0;
 
   return (
     <div
       ref={sectionRef}
       className={`bg-black min-h-screen flex flex-col items-start pt-10 !px-10 ${montserrat.className} overflow-x-hidden`}
-      style={{ minHeight: "100vh" }}
     >
-      <div className="w-full text-[#d4ff3f] font-bold uppercase leading-none">
+      <div className="w-full text-[#66FF66] font-bold uppercase leading-none">
         {/* Row 1 - CHOOSE */}
         <motion.div
           initial={{ x: "100%", opacity: 0 }}
@@ -87,7 +81,6 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-[15vw] text-left"
-          style={{ marginTop: 0 }}
         >
           CHOOSE
         </motion.div>
@@ -101,7 +94,6 @@ export default function Home() {
           className="flex items-center justify-center gap-0 relative"
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
-          style={{ marginTop: 0 }}
         >
           {/* VO */}
           <motion.span
@@ -116,8 +108,8 @@ export default function Home() {
           <motion.div
             animate={{ width: paraWidth, opacity: paraOpacity }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-white text-[0.7vw] leading-snug whitespace-normal overflow-hidden text-center select-none"
-            style={{ minHeight: "6vw", margin: hovering ? "0" : "0 1vw" }}
+            className="text-[#DDDDDD] text-[0.7vw] leading-snug whitespace-normal overflow-hidden text-center select-none"
+            style={{ minHeight: "6vw", margin: hovering ? "0 1vw" : "0" }}
           >
             {displayText}
           </motion.div>
@@ -141,17 +133,13 @@ export default function Home() {
             duration: 1,
             ease: "easeOut",
             delay: 1.3,
-            // When OWN animation ends, set animationsComplete true
-            onComplete: () => {
-              setAnimationsComplete(true);
-            },
+            onComplete: () => setAnimationsComplete(true),
           }}
           className="flex items-center gap-[2vw] justify-end"
-          style={{ marginTop: 0 }}
         >
           {/* Grid */}
           <div
-            className="relative w-[34.5vw] h-[7.56vw] border-2 border-[#222] overflow-hidden"
+            className="relative w-[35vw] h-[7vw] border-2 border-[#222] overflow-hidden"
             style={{
               backgroundImage:
                 "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)",
@@ -159,7 +147,7 @@ export default function Home() {
             }}
           >
             <motion.div
-              className="absolute inset-0 flex items-center justify-end !mr-10 text-[1.5vw] text-[#d4ff3f]"
+              className="absolute inset-0 flex items-center justify-end !mr-10 text-[1.5vw] text-[#66FF66]"
               animate={{ x: [0, 10, 0] }}
               transition={{
                 duration: 0.6,

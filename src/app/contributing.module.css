@@ -1,6 +1,6 @@
 .wrapper {
   background-color: black;
-  color: white;
+  color: #DDDDDD;
   width: 100%;
   height: 150vh; /* enough for both parts */
   font-family: Arial, sans-serif;
@@ -30,7 +30,7 @@
   
 .title {
   font-size: 8rem;
-  color: #fb8fc1;
+  color: #66FF66;
   margin: 5rem;
   line-height: 1.2;
   position: relative;

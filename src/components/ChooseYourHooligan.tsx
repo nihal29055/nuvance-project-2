@@ -18,7 +18,7 @@ interface HooliganNFT {
 }
 
 export default function ChooseYourHooligan() {
-  const pink = "#bd027b";
+  const pink = "#66FF66";
 
   const hooligans: HooliganNFT[] = [
     { id: "#5677", price: "10.266 WETH", image: "/images/photo_1_2025-08-01_23-23-17.jpg" },
@@ -43,7 +43,7 @@ export default function ChooseYourHooligan() {
         <CVO />
       </section>
 
-      <section className="min-h-screen bg-black text-white text-center flex flex-col items-center py-2 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
+      <section className="min-h-screen bg-black text-[#DDDDDD] text-center flex flex-col items-center py-2 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
         {/* Title block */}
         <div className="relative z-20 mb-20 flex items-center justify-center flex-wrap sm:flex-nowrap gap-4">
           <div className="absolute text-[3rem] sm:text-[8rem] font-black text-gray-800 opacity-40 select-none leading-none whitespace-pre-line">
@@ -51,7 +51,7 @@ export default function ChooseYourHooligan() {
           </div>
 
           <span
-            className={`${rockSalt.className} text-[5rem] sm:text-[8rem] !py-10 font-extrabold relative z-10 text-[#fb8fc1]`}
+            className={`${rockSalt.className} text-[5rem] sm:text-[8rem] !py-10 font-extrabold relative z-10 text-[#66FF66]`}
           >
             Grumpy
           </span>
@@ -72,7 +72,7 @@ export default function ChooseYourHooligan() {
             className="bg-black border border-pink-900 p-4 relative w-full h-full max-w-[20rem] overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-lime-400 text-2xl transition hover:bg-lime-400 hover:text-black rounded"
             style={{ borderWidth: "2px" }}
           >
-            VIEW <br /> ON OPENSEA
+            VIEW <br /> ON ARTAXA
           </div>
 
         </div>
@@ -97,7 +97,7 @@ function NFTCard({ id, price, image }: HooliganNFT) {
     >
       <div className="w-full h-full relative group rounded overflow-hidden">
         <div
-          className={`absolute inset-0 bg-pink-500 transition-opacity duration-300 z-10 rounded ${active ? "opacity-30" : "opacity-0"
+          className={`absolute inset-0 bg-[#66FF66] transition-opacity duration-300 z-10 rounded ${active ? "opacity-30" : "opacity-0"
             } hover:opacity-30`}
         ></div>
 
@@ -109,14 +109,14 @@ function NFTCard({ id, price, image }: HooliganNFT) {
         />
 
         <p
-          className={`${rockSalt.className} absolute top-1 left-2 text-sm text-white bg-black bg-opacity-50 px-2 z-20 rounded select-none`}
+          className={`${rockSalt.className} absolute top-1 left-2 text-sm text-[#DDDDDD] bg-black bg-opacity-50 px-2 z-20 rounded select-none`}
         >
           Grumpy {id}
         </p>
 
         {price !== "—" && (
           <p
-            className={`${rockSalt.className} absolute bottom-1 right-2 text-pink-400 text-cm bg-black bg-opacity-50 px-2 z-20 rounded select-none`}
+            className={`${rockSalt.className} absolute bottom-1 right-2 text-[#66FF66] text-cm bg-black bg-opacity-50 px-2 z-20 rounded select-none`}
           >
             {price}
           </p>

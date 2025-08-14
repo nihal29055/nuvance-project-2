@@ -15,8 +15,8 @@ interface FAQItem {
 }
 
 const FAQ: React.FC = () => {
-  const pink = "#fb8fc1";
-  const lime = "#C6FF5F";
+  const pink = "#66FF66";
+  const lime = "#66FF66";
   const [openItems, setOpenItems] = useState<number[]>([]);
   const [typedText, setTypedText] = useState("");
   const fullText = "QUESTIONS";

@@ -8,7 +8,7 @@ const rockSalt = Rock_Salt({
 });
 
 export default function HooliganUI() {
-  const pink = "#bd027b";
+  const pink = "#66FF66";
 
   return (
     <>
@@ -77,7 +77,7 @@ export default function HooliganUI() {
         }
       `}</style>
 
-      <section className="main-container relative flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden">
+      <section className="main-container relative flex flex-col items-center justify-center min-h-screen bg-black text-[#DDDDDD] overflow-hidden">
         {/* Background text */}
         <motion.div
           className="absolute text-gray-800 text-[12vw] font-bold opacity-30 select-none"
@@ -132,7 +132,7 @@ export default function HooliganUI() {
           style={{ fontSize: "5rem", top: "auto", bottom: "auto" }}
         >
           <span
-            className={`${rockSalt.className} !font-extrabold text-[#fb8fc1]`}
+            className={`${rockSalt.className} !font-extrabold text-[#66FF66]`}
           >
             Grumpy
           </span>
@@ -140,7 +140,7 @@ export default function HooliganUI() {
 
         {/* Bottom left paragraph */}
         <motion.div
-          className="absolute bottom-40 left-10 text-gray-300 bottom-left-text"
+          className="absolute bottom-40 left-10 text-[#DDDDDD] bottom-left-text"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -152,14 +152,14 @@ export default function HooliganUI() {
             social media. Join our mission to support the livestock industry and
             the NFT community.
           </p>
-          <p className="!mt-2 font-bold text-white text-3xl tracking-wider">
+          <p className="!mt-2 font-bold text-[#DDDDDD] text-3xl tracking-wider">
             WE CAN DO MORE TOGETHER!
           </p>
         </motion.div>
 
         {/* Bottom right links */}
         <motion.div
-          className="absolute bottom-20 right-4 flex gap-8 text-lime-400 bottom-right-links"
+          className="absolute bottom-20 right-4 flex gap-8 text-[#66FF66] bottom-right-links"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
