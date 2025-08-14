@@ -106,7 +106,6 @@ contri`;
         viewport={{ once: false, amount: 0.3 }}
         variants={fadeUp}
       >
-        <span className={`${styles.discordTag} ${styles.tag}`}>DISCORD</span>
         <h1 className={`${styles.title} ${rockSalt.className}`}>
           WAY OF <span className={styles.twitterTag}>TWITTER</span>
         </h1>
@@ -118,7 +117,7 @@ contri`;
             <span style={{ visibility: "hidden" }}>CONTRIBUTING</span>
           )}
         </div>
-        <span className={`${styles.instagramTag} ${styles.tag}`}>INSTAGRAM</span>
+        <span className={`${styles.instagramTag} ${styles.tag}`}>TELEGRAM</span>
       </motion.div>
 
       {/* Subtitle and Paragraph with typing */}

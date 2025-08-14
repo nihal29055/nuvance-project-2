@@ -194,7 +194,7 @@ const HooliganLanding: React.FC = () => {
           <div className="flex-1 flex flex-col justify-center items-start text-left lg:pl-8">
             {/* Description */}
             <div className="mb-8 max-w-3xl">
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed font-light">
+              <p className="text-lg md:text-xl lg:text-2xl text-[#DDDDDD] leading-relaxed font-light">
                 Become a part of an exclusive community of collectors where
                 <span className="text-pink-300 font-medium">
                   {" "}
@@ -235,16 +235,16 @@ const HooliganLanding: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-pink-400">
           Way of Contributing
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+        <p className="text-[#DDDDDD] max-w-2xl mx-auto mb-8">
           The creators of our project have built this universe to reward
           participation. Join us in Discord and follow on Twitter to stay
           engaged.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          <button className="bg-gray-700 hover:bg-gray-600 text-[#DDDDDD] px-6 py-3 rounded-lg transition-all duration-300">
             Discord
           </button>
-          <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          <button className="bg-gray-700 hover:bg-gray-600 text-[#DDDDDD] px-6 py-3 rounded-lg transition-all duration-300">
             Twitter
           </button>
         </div>
@@ -266,13 +266,13 @@ const HooliganLanding: React.FC = () => {
           Join Our Hooligan Community
         </h2>
         <div className="flex justify-center gap-4 flex-wrap mb-4">
-          <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          <button className="bg-gray-700 hover:bg-gray-600 text-[#DDDDDD] px-6 py-3 rounded-lg transition-all duration-300">
             Discord
           </button>
-          <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          <button className="bg-gray-700 hover:bg-gray-600 text-[#DDDDDD] px-6 py-3 rounded-lg transition-all duration-300">
             Twitter
           </button>
-          <button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-all duration-300">
+          <button className="bg-gray-700 hover:bg-gray-600 text-[#DDDDDD] px-6 py-3 rounded-lg transition-all duration-300">
             Instagram
           </button>
         </div>

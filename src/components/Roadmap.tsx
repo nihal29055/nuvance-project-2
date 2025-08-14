@@ -42,13 +42,13 @@ const Roadmap: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const typedRoadmap = useTypingEffect("ROADMAP", 80, isVisible);
-  const pink = "#bd027b";
+  const typedRoadmap = useTypingEffect("MILESTONES", 80, isVisible);
+  const pink = "#66FF66";
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-black text-white flex items-center justify-center overflow-hidden flex-col px-6 sm:px-16 py-10"
+      className="relative min-h-screen bg-black text-[#DDDDDD] flex items-center justify-center overflow-hidden flex-col px-6 sm:px-16 py-10"
     >
       {/* Background image */}
       <div
@@ -58,21 +58,21 @@ const Roadmap: React.FC = () => {
 
       {/* Big desktop ROADMAP */}
       <div
-        className={`${rockSalt.className} roadmap-title absolute text-[5rem] font-extrabold z-10 text-[#fb8fc1]`}
+        className={`${rockSalt.className} roadmap-title absolute text-[5rem] font-extrabold z-10 text-[#66FF66]`}
         style={{
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
       >
-        {typedRoadmap || <span style={{ visibility: "hidden" }}>ROADMAP</span>}
+        {typedRoadmap || <span style={{ visibility: "hidden" }}>MILESTONES</span>}
       </div>
 
       {/* Mobile ROADMAP */}
       <h2
-        className={`${rockSalt.className} roadmap-phone-title text-[5rem] font-extrabold text-center mb-8 text-[#fb8fc1] block sm:hidden`}
+        className={`${rockSalt.className} roadmap-phone-title text-[5rem] font-extrabold text-center mb-8 text-[#66FF66] block sm:hidden`}
       >
-        {typedRoadmap || <span style={{ visibility: "hidden" }}>ROADMAP</span>}
+        {typedRoadmap || <span style={{ visibility: "hidden" }}>MILESTONES</span>}
       </h2>
 
 
@@ -85,8 +85,8 @@ const Roadmap: React.FC = () => {
         transition={{ duration: 0.8, delay: 0, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="text-lime-400 font-bold mb-2 text-lg">2024 Q1</p>
-        <p className="text-gray-300 text-[10.5px] leading-snug">
+        <p className="text-[#66FF66] font-bold mb-2 text-lg">2024 Q1</p>
+        <p className="text-[#DDDDDD] text-[10.5px] leading-snug">
           Hosting contests and virtual events while offering exclusive benefits
           like discounts and early access to new releases for current NFT
           holders.
@@ -102,8 +102,8 @@ const Roadmap: React.FC = () => {
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="text-lime-400 font-bold mb-2 text-lg">2024 Q2</p>
-        <p className="text-gray-300 text-[10.5px] leading-snug">
+        <p className="text-[#66FF66] font-bold mb-2 text-lg">2024 Q2</p>
+        <p className="text-[#DDDDDD] text-[10.5px] leading-snug">
           Involving NFT owners in decision-making through polls and surveys;
           planning collaborations to create unique content and expand reach.
         </p>
@@ -118,8 +118,8 @@ const Roadmap: React.FC = () => {
         transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="text-lime-400 font-bold mb-2 text-lg">2024 Q3</p>
-        <p className="text-gray-300 text-[10.5px] leading-snug">
+        <p className="text-[#66FF66] font-bold mb-2 text-lg">2024 Q3</p>
+        <p className="text-[#DDDDDD]text-[10.5px] leading-snug">
           Offering NFT holders exclusive content like videos and music;
           developing a game with interactive character use and charity support.
         </p>
@@ -134,15 +134,15 @@ const Roadmap: React.FC = () => {
         transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.4 }}
       >
-        <p className="text-lime-400 font-bold mb-2 text-lg">2024 Q4</p>
-        <p className="text-gray-300 text-[10.5px] leading-snug">
+        <p className="text-[#66FF66] font-bold mb-2 text-lg">2024 Q4</p>
+        <p className="text-[#DDDDDD] text-[10.5px] leading-snug">
           Creating an owner portal for NFT owners to share experiences, create
           content, and monetize while supporting a shelter.
         </p>
       </motion.div>
 
       {/* Decorative dot */}
-      <div className="decorative-dot absolute top-1/4 right-20 w-3 h-3 bg-lime-400 rounded-full animate-pulse opacity-70" />
+      <div className="decorative-dot absolute top-1/4 right-20 w-3 h-3 bg[#66FF66] rounded-full animate-pulse opacity-70" />
     </section>
   );
 };
