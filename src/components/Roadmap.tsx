@@ -42,7 +42,7 @@ const Roadmap: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const typedRoadmap = useTypingEffect("MILESTONES", 80, isVisible);
+  const typedRoadmap = useTypingEffect("PLANNED MILESTONES", 80, isVisible);
   const pink = "#66FF66";
 
   return (
@@ -65,7 +65,7 @@ const Roadmap: React.FC = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        {typedRoadmap || <span style={{ visibility: "hidden" }}>MILESTONES</span>}
+        {typedRoadmap || <span style={{ visibility: "hidden" }}>PLANNED MILESTONES</span>}
       </div>
 
       {/* Mobile ROADMAP */}

@@ -107,13 +107,30 @@ contri`;
         viewport={{ once: false, amount: 0.3 }}
         variants={fadeUp}
       >
-        <h1 className={`${styles.title} ${rockSalt.className}`}>
-          WAY OF <span className={styles.twitterTag}>TWITTER</span>
+
+        <h1
+          className={`${styles.title} ${rockSalt.className}`}
+          style={{ position: "relative", zIndex: 2 }}
+        >
+          WAY OF{" "}
+          <a
+            href="https://t.me/YourTelegramUsername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.twitterTag}
+            style={{ position: "relative", zIndex: 3 }}
+          >
+            TWITTER
+          </a>
         </h1>
 
         <div
           className={`${styles.title} ${rockSalt.className}`}
-          style={{ minHeight: "2.5rem" }}
+          style={{
+            minHeight: "2.5rem",
+            position: "relative",
+            zIndex: 1, // TWITTER ke neeche
+          }}
         >
           {typedContributing || (
             <span style={{ visibility: "hidden" }}>CONTRIBUTING</span>
@@ -146,6 +163,6 @@ contri`;
           {typedBottom}
         </p>
       </motion.div>
-    </section>
+    </section >
   );
 }

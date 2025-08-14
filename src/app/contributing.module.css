@@ -46,7 +46,7 @@
 
 /* Discord Tag */
 .discordTag {
-  background: linear-gradient(135deg, #b8ff82, #adff2f);
+  background: linear-gradient(135deg, #66FF66, #adff2f);
   padding: 13px 16px;
   border-radius: 3px;
   transform: rotate(-4deg);
@@ -59,8 +59,8 @@
 /* Twitter Tag (ellipse) */
 .twitterTag {
   background-color: transparent;
-  color: #b8ff82;
-  border: 2px solid #b8ff82;
+  color: #DDDDDD;
+  border: 2px solid #DDDDDD;
   border-radius: 100%;
   font-size: 12px;
   padding: 20px 36px;
@@ -73,7 +73,7 @@
 
 /* Instagram Tag (jagged brush) */
 .instagramTag {
-  background: linear-gradient(135deg, #b8ff82, #adff2f);
+  background: linear-gradient(135deg, #DDDDDD, #DDDDDD);
   clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
   padding: 4px 16px;
   transform: rotate(-8deg);
@@ -135,7 +135,7 @@
     margin: 0 auto 1rem auto !important;
     line-height: 1.1 !important;
     margin-left: 0 !important;
-    color: #fb8fc1 !important;
+    color: #66FF66 !important;
     position: relative !important;
     display: inline-block;
     white-space: normal !important;
@@ -160,15 +160,15 @@
 
   .twitterTag {
     border-radius: 50% !important;
-    border: 2px solid #b8ff82 !important;
+    border: 2px solid #DDDDDD !important;
     padding: 6px 14px !important;
-    color: #b8ff82 !important;
+    color: #DDDDDD !important;
     background-color: transparent !important;
   }
 
   .instagramTag {
     clip-path: none !important;
-    background: linear-gradient(135deg, #b8ff82, #adff2f) !important;
+    background: linear-gradient(135deg, #DDDDDD, #DDDDDD) !important;
   }
 
   .bottomBlock {

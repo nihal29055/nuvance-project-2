@@ -69,7 +69,7 @@ export default function ChooseYourHooligan() {
 
           {/* VIEW ON OPENSEA tile */}
           <div
-            className="bg-black border border-pink-900 p-4 relative w-full h-full max-w-[20rem] overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-lime-400 text-2xl transition hover:bg-lime-400 hover:text-black rounded"
+            className="bg-black border border-pink-900 p-4 relative w-full h-full max-w-[20rem] overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-[#66FF66] text-2xl transition hover:bg-[#66FF66] hover:text-black rounded"
             style={{ borderWidth: "2px" }}
           >
             VIEW <br /> ON ARTAXA

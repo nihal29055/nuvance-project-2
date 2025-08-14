@@ -11,6 +11,7 @@ import ContributingPage from "@/components/ContributingOverlay";
 import ChooseYourHooligan from "@/components/ChooseYourHooligan";
 import JOC from "../components/JoinOurCommunity";
 import { Rock_Salt } from "next/font/google";
+import "@/app/globals.css";
 
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
@@ -125,10 +126,18 @@ Ready to make one yours?`;
       {phase === "hero" && !menuOpen && (
         <button
           onClick={() => setMenuOpen(true)}
-          className="fixed text-gray-400 font-bold text-xs sm:text-xs tracking-widest z-[9999] hover:text-gray-200 transition-colors top-3 sm:top-5 right-4 sm:right-5 cursor-pointer select-none pointer-events-auto opacity-100"
+          className="fixed menu-button z-[9999] top-3 sm:top-5 left-4 cursor-pointer opacity-100"
           aria-label="Open Menu"
         >
           MENU
+        </button>
+      )}
+      {phase === "hero" && !menuOpen && (
+        <button
+          className="fixed menu-button buy-button z-[9999] top-3 sm:top-5 right-4 cursor-pointer opacity-100"
+          aria-label="Buy Token"
+        >
+          BUY $GRUMPY
         </button>
       )}
 
@@ -290,7 +299,7 @@ Ready to make one yours?`;
                   className="relative w-[160px] sm:w-[400px] lg:w-[640px] h-auto object-contain z-10"
                   priority
                 />
-                
+
               </div>
             </motion.div>
 
@@ -306,7 +315,7 @@ Ready to make one yours?`;
             >
               <p
                 className={`text-[10.5px] font-bold leading-relaxed whitespace-pre-line max-w-3xl mx-auto ${isMobile ? "text-left" : "text-center"
-                  } text-gray-400`}
+                  } text-[#DDDDDD]`}
               >
                 {displayedText}
               </p>
@@ -329,14 +338,14 @@ Ready to make one yours?`;
                     cy="85"
                     rx="235"
                     ry="70"
-                    stroke="#B3FF00"
+                    stroke="#66FF66"
                     strokeWidth="5"
                     fill="transparent"
                   />
                   <text
                     x="265"
                     y="90"
-                    fill="#B3FF00"
+                    fill="#66FF66"
                     fontSize="14"
                     className="sm:text-[22px]"
                     fontWeight="700"
