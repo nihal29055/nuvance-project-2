@@ -1,6 +1,7 @@
 "use client";
 import styles from "../app/contributing.module.css";
 import { Rock_Salt } from "next/font/google";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
@@ -109,6 +110,7 @@ contri`;
         <h1 className={`${styles.title} ${rockSalt.className}`}>
           WAY OF <span className={styles.twitterTag}>TWITTER</span>
         </h1>
+
         <div
           className={`${styles.title} ${rockSalt.className}`}
           style={{ minHeight: "2.5rem" }}
@@ -117,7 +119,15 @@ contri`;
             <span style={{ visibility: "hidden" }}>CONTRIBUTING</span>
           )}
         </div>
-        <span className={`${styles.instagramTag} ${styles.tag}`}>TELEGRAM</span>
+
+        <Link
+          href="https://t.me/YourTelegramUsername" // Replace with your Telegram link
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className={`${styles.instagramTag} ${styles.tag}`}>TELEGRAM</span>
+        </Link>
+
       </motion.div>
 
       {/* Subtitle and Paragraph with typing */}
