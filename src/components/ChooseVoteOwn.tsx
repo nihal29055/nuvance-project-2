@@ -87,11 +87,11 @@ export default function Home() {
       {/* Bunny Image */}
       <div className="absolute left-20 bottom-[70px] z-10">
         <Image
-          src="/bunny2.png"
+          src="/bunny4.png"
           alt="Grumpy"
-          width={210}
-          height={210}
-          className="bunny-img"
+          width={300}
+          height={300}
+          className="bunny-img4"
         />
       </div>
 

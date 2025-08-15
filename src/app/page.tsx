@@ -313,7 +313,7 @@ Ready to make one yours?`;
               }}
             >
               <p
-                className={`text-[10.5px] font-bold leading-relaxed whitespace-pre-line max-w-3xl mx-auto ${isMobile ? "text-left" : "text-center"
+                className={`text-[7px] sm:text-[10.5px] font-bold leading-relaxed whitespace-pre-line max-w-3xl mx-auto ${isMobile ? "text-left" : "text-center"
                   } text-gray-400`}
               >
                 {displayedText}

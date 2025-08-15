@@ -42,44 +42,67 @@ const Roadmap: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 640; // Tailwind's sm breakpoint
+  const isMobile =
+    typeof window !== "undefined" && window.innerWidth < 640; // Tailwind's sm breakpoint
   const titleText = isMobile ? "MILESTONES" : "PLANNED MILESTONES";
 
-  const typedRoadmap = useTypingEffect(titleText, 80, isVisible); // <-- FIXED
-
-  const pink = "#66FF66";
-
+  const typedRoadmap = useTypingEffect(titleText, 80, isVisible);
 
   return (
     <section
       ref={sectionRef}
       className="relative min-h-screen bg-black text-[#DDDDDD] flex items-center justify-center overflow-hidden flex-col px-6 sm:px-16 py-10"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 opacity-10 bg-center bg-no-repeat bg-contain pointer-events-none"
-        style={{ backgroundImage: "url('/your-background-image.png')" }}
-      />
-
-      {/* Big desktop ROADMAP */}
-      <div
-        className={`${rockSalt.className} roadmap-title absolute text-[5rem] font-extrabold z-10 text-[#66FF66]`}
+      {/* Background paw SVG */}
+      <svg
+        className="absolute opacity-10 pointer-events-none z-0"
+        viewBox="0 0 200 200"
+        aria-hidden="true"
+        focusable="false"
         style={{
-          top: "50%",
+          fill: "#66FF66",
+          width: isMobile ? "220px" : "420px",
+          top: isMobile ? "10%" : "50%",
           left: "50%",
-          transform: "translate(-50%, -50%)",
+          transform: `translate(-50%, ${isMobile ? "0" : "-50%"}) rotate(-6deg)`,
         }}
       >
-        {typedRoadmap || <span style={{ visibility: "hidden" }}>PLANNED MILESTONES</span>}
-      </div>
+        {/* toe 1 */}
+        <path d="M46 44 C36 18, 8 18, 12 46 C16 74, 44 78, 56 56 C52 50, 49 48, 46 44 Z" />
+        {/* toe 2 */}
+        <path d="M86 34 C76 8, 44 8, 52 36 C60 64, 92 68, 100 44 C96 40, 90 36, 86 34 Z" />
+        {/* toe 3 */}
+        <path d="M128 36 C120 12, 92 10, 98 38 C104 66, 136 70, 142 46 C138 42, 133 39, 128 36 Z" />
+        {/* toe 4 */}
+        <path d="M168 58 C154 32, 124 34, 138 62 C152 90, 178 98, 182 70 C181 64, 175 60, 168 58 Z" />
+        {/* main pad */}
+        <path d="M60 96 C30 120, 34 170, 72 178 C100 184, 132 160, 148 132 C154 122, 156 106, 140 96 C122 84, 82 78, 60 96 Z" />
+      </svg>
 
-      {/* Mobile ROADMAP */}
-      <h2
-        className={`${rockSalt.className} roadmap-phone-title text-[5rem] font-extrabold text-center mb-8 text-[#66FF66] block sm:hidden`}
-      >
-        {typedRoadmap || <span style={{ visibility: "hidden" }}>MILESTONES</span>}
-      </h2>
+      {/* Desktop title */}
+      {!isMobile && (
+        <div
+          className={`${rockSalt.className} roadmap-title absolute text-[5rem] font-extrabold z-10 text-[#66FF66]`}
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          {typedRoadmap || (
+            <span style={{ visibility: "hidden" }}>PLANNED MILESTONES</span>
+          )}
+        </div>
+      )}
 
+      {/* Mobile title */}
+      {isMobile && (
+        <h2
+          className={`${rockSalt.className} roadmap-phone-title text-[5rem] font-extrabold text-center mb-8 text-[#66FF66] block sm:hidden relative z-10`}
+        >
+          {typedRoadmap || <span style={{ visibility: "hidden" }}>MILESTONES</span>}
+        </h2>
+      )}
 
       {/* Q1 */}
       <motion.div
@@ -130,7 +153,6 @@ const Roadmap: React.FC = () => {
         </p>
       </motion.div>
 
-
       {/* Q4 */}
       <motion.div
         className="roadmap-item"
@@ -148,7 +170,7 @@ const Roadmap: React.FC = () => {
       </motion.div>
 
       {/* Decorative dot */}
-      <div className="decorative-dot absolute top-1/4 right-20 w-3 h-3 bg[#66FF66] rounded-full animate-pulse opacity-70" />
+      <div className="decorative-dot absolute top-1/4 right-20 w-3 h-3 bg-[#66FF66] rounded-full animate-pulse opacity-70" />
     </section>
   );
 };

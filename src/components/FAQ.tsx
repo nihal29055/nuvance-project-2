@@ -95,7 +95,7 @@ const FAQ: React.FC = () => {
           pointer-events: none;
           text-align: center;
           width: 100%;
-          color: rgba(107, 114, 128, 0.3);
+          color: rgba(107, 114, 128, 0.8);
           font-weight: 800;
           letter-spacing: 0.1em;
           position: absolute;
@@ -195,7 +195,7 @@ const FAQ: React.FC = () => {
           }
           .faq-list {
             max-width: 100%;
-            margin-top: 2rem;
+            margin-top: 0.1rem;
           }
           .faq-question {
             font-size: 1rem;
@@ -262,7 +262,7 @@ const FAQ: React.FC = () => {
         </motion.div>
 
         {/* FAQ List */}
-        <div className="faq-list !py-20">
+        <div className="faq-list !py-10">
           {faqData.map((item, idx) => (
             <motion.div
               key={item.id}

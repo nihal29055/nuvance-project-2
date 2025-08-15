@@ -82,7 +82,7 @@ export default function HooliganUI() {
       <section className="main-container relative flex flex-col items-center justify-center min-h-screen bg-black text-[#DDDDDD] overflow-hidden">
         {/* Background text */}
         <motion.div
-          className="absolute text-gray-600 font-bold opacity-30 select-none text-[12vw] sm:text-[10vw] md:text-[12vw] top-[50%] sm:top-[10%] left-1/2 -translate-x-1/2 text-center"
+          className="absolute text-gray-600 font-bold opacity-30 select-none text-[12vw] sm:text-[10vw] md:text-[12vw] top-[45%] sm:top-[10%] left-1/2 -translate-x-1/2 text-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 0.3, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -113,7 +113,7 @@ export default function HooliganUI() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          style={{ fontSize: "5rem", top: "auto", bottom: "auto" }}
+          style={{ fontSize: "4rem", top: "auto", bottom: "auto" }}
         >
           <span
             className={`${rockSalt.className} !font-extrabold text-[#66FF66]`}

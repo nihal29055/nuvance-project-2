@@ -89,13 +89,13 @@ contri`;
       style={{ paddingBottom: "2rem", position: "relative" }}
     >
       {/* Bunny Image */}
-      <div className="absolute right-1/3 top-30 z-10">
+      <div className="absolute right-1/3 top-50 z-0">
         <Image
-          src="/bunny2.png"
+          src="/bunny5.png"
           alt="Grumpy"
-          width={210}
-          height={210}
-          className="bunny-img"
+          width={700}
+          height={700}
+          className="bunny-img5"
         />
       </div>
 
@@ -175,13 +175,13 @@ contri`;
       </motion.div>
 
       {/* Bunny Image */}
-      <div className="absolute right-32 bottom-1/9 z-10">
+      <div className="absolute right-10 bottom-1/9 z-10">
         <Image
-          src="/bunny2.png"
+          src="/bunny3.png"
           alt="Grumpy"
           width={210}
           height={210}
-          className="bunny-img"
+          className="bunny-img3"
         />
       </div>
     </section>

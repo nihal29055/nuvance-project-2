@@ -43,7 +43,7 @@ export default function ChooseYourHooligan() {
         <CVO />
       </section>
 
-      <section className="min-h-screen bg-black text-[#DDDDDD] text-center flex flex-col items-center py-2 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
+      <section className="min-h-screen bg-black text-[#DDDDDD] text-center flex flex-col items-center py-3 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
         {/* Title block */}
         <div className="relative z-20 mb-20 flex items-center justify-center flex-wrap sm:flex-nowrap gap-4">
           <div className="absolute text-[3rem] sm:text-[8rem] font-black text-gray-600 opacity-40 select-none leading-none whitespace-pre-line">
@@ -68,12 +68,14 @@ export default function ChooseYourHooligan() {
           ))}
 
           {/* VIEW ON OPENSEA tile */}
+          {/* VIEW ON ARTAXA tile */}
           <div
-            className="bg-black border border-pink-900 p-4 relative w-full h-full max-w-[20rem] overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-[#66FF66] text-2xl transition hover:bg-[#66FF66] hover:text-black rounded"
+            className="bg-black border border-pink-900 relative h-[15rem] w-full max-w-[20rem] sm:h-[18rem] sm:w-full md:h-[20rem] md:w-full overflow-hidden mx-auto cursor-pointer flex items-center justify-center font-bold text-[#66FF66] text-2xl transition hover:bg-[#66FF66] hover:text-black rounded"
             style={{ borderWidth: "2px" }}
           >
             VIEW <br /> ON ARTAXA
           </div>
+
 
         </div>
 

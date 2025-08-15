@@ -258,7 +258,13 @@ body {
 }
 
 @media (max-width: 640px) {
-  .bunny-img {
+  .bunny-img3 {
+    width: 100px; /* phone size */
+  }
+  .bunny-img4 {
+    width: 320px; /* phone size */
+  }
+  .bunny-img5 {
     width: 100px; /* phone size */
   }
 }

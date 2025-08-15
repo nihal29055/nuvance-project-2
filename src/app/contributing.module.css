@@ -67,7 +67,7 @@
   transform: rotate(-50deg);
   position: relative;
   top: 44px;
-  left: -185px;
+  left: -285px;
   margin: 0 8px;
 }
 
@@ -160,15 +160,15 @@
 
   .twitterTag {
     border-radius: 50% !important;
-    border: 2px solid #DDDDDD !important;
+    border: 2px solid #B3FF00 !important;
     padding: 6px 14px !important;
-    color: #DDDDDD !important;
+    color: #B3FF00 !important;
     background-color: transparent !important;
   }
 
   .instagramTag {
     clip-path: none !important;
-    background: linear-gradient(135deg, #DDDDDD, #DDDDDD) !important;
+    background: linear-gradient(135deg, #B3FF00, #B3FF00) !important;
   }
 
   .bottomBlock {
