@@ -103,7 +103,7 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background-color: #66FF66;
+  background-color: #B3FF00;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -125,7 +125,7 @@ body {
 @media (max-width: 640px) {
   .roadmap-item {
     /* width: 100%; */
-    margin: 1.5rem auto !important;
+    margin: 2.5rem auto !important;
     text-align: left !important;
   }
 
@@ -134,7 +134,7 @@ body {
   }
 
   .roadmap-phone-title {
-    font-size: 3.8rem;
+    font-size: 2.8rem;
     display: block !important;
   }
 
@@ -182,55 +182,83 @@ body {
   }
 }
 
-
-
 .menu-button {
   padding: 1.1em 2em;
-  background: none;
-  border: 2px solid #DDDDDD;
+  background: #66FF66;
+  border: 2px solid #fff;
   font-size: 15px;
   color: #131313;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.3s;
   border-radius: 12px;
-  background-color: #66FF66;
   font-weight: bolder;
   box-shadow: 0 2px 0 2px #000;
+  z-index: 1;
 }
 
 .menu-button::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 120%;
-  background-color: #0073a4;
-  top: 50%;
+  height: 0%;
+  background: rgb(0, 162, 202);
+  bottom: 0;
   left: 0;
-  transform: skewX(30deg) translate(-150%, -50%);
-  transition: all 0.5s;
+  z-index: -2;
+  border-top-left-radius: 50% 30px;
+  border-top-right-radius: 50% 30px;
+  transition: height 0.5s ease, border-radius 0.5s ease;
 }
 
-.menu-button:hover {
-  background-color: #000;
-  color: #66FF66;
-  box-shadow: 0 2px 0 2px #0d3b66;
+.menu-button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: black;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-top-left-radius: 50% 30px;
+  border-top-right-radius: 50% 30px;
+  transition: height 0.5s ease, border-radius 0.5s ease;
+  transition-delay: 0.1s; /* Delay black until pink is done */
 }
 
 .menu-button:hover::before {
-  transform: skewX(30deg) translate(150%, -50%);
-  transition-delay: 0.1s;
+  height: 100%;
+  border-radius: 0;
+}
+
+.menu-button:hover::after {
+  height: 100%;
+  border-radius: 0;
+}
+
+.menu-button:hover {
+  color: #66FF66;
+  box-shadow: 0 2px 0 2px ;
 }
 
 .menu-button:active {
   transform: scale(0.9);
 }
 
-/* Responsive adjustments */
 @media (max-width: 640px) {
   .menu-button {
     padding: 0.8em 1.2em;
     font-size: 13px;
     border-radius: 8px;
+  }
+}
+
+.bunny-img {
+  width: 210px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .bunny-img {
+    width: 100px; /* phone size */
   }
 }

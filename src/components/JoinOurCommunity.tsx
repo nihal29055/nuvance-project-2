@@ -1,6 +1,8 @@
 "use client";
 import { Rock_Salt } from "next/font/google";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 
 const rockSalt = Rock_Salt({
   subsets: ["latin"],
@@ -94,32 +96,15 @@ export default function HooliganUI() {
 
         {/* Bunny outline */}
         <motion.div
-          className="absolute top-10 right-10 opacity-10 select-none"
+          className="absolute top-10 right-10 select-none"
           initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 0.1, scale: 1 }}
+          whileInView={{ opacity: 0.5, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          style={{ width: "16rem", height: "16rem" }}
+          style={{ width: "20rem", height: "20rem" }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 200 200"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M70 20 C60 0, 40 0, 35 25 C30 50, 50 90, 65 70" />
-            <path d="M130 20 C140 0, 160 0, 165 25 C170 50, 150 90, 135 70" />
-            <circle cx="100" cy="110" r="50" />
-            <line x1="75" y1="95" x2="85" y2="105" />
-            <line x1="85" y1="95" x2="75" y2="105" />
-            <line x1="115" y1="95" x2="125" y2="105" />
-            <line x1="125" y1="95" x2="115" y2="105" />
-            <circle cx="100" cy="115" r="3" fill="currentColor" />
-            <path d="M95 125 Q100 135 105 125" />
-          </svg>
+          <Image src="/bunny2.png" alt="Grumpy" width={250}
+            height={250} />
         </motion.div>
 
         {/* Main Grumpy text */}

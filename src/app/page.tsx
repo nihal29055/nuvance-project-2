@@ -142,6 +142,16 @@ Ready to make one yours?`;
       )}
 
       {phase === "typing" && <TypingLoader onFinish={() => setPhase("svg")} />}
+      {phase === "hero" && (
+        <Image
+          className="absolute left-4 top-12 bunny-img"
+          src="/bunny2.png"
+          alt="Grumpy"
+          width={210}
+          height={210}
+        />
+      )}
+
 
       {phase === "svg" && (
         <div className="relative w-full h-screen flex items-center justify-center px-4 text-[#66FF66]">
@@ -315,7 +325,7 @@ Ready to make one yours?`;
             >
               <p
                 className={`text-[10.5px] font-bold leading-relaxed whitespace-pre-line max-w-3xl mx-auto ${isMobile ? "text-left" : "text-center"
-                  } text-[#DDDDDD]`}
+                  } text-gray-400`}
               >
                 {displayedText}
               </p>
@@ -338,14 +348,14 @@ Ready to make one yours?`;
                     cy="85"
                     rx="235"
                     ry="70"
-                    stroke="#66FF66"
+                    stroke="#B3FF00"
                     strokeWidth="5"
                     fill="transparent"
                   />
                   <text
                     x="265"
                     y="90"
-                    fill="#66FF66"
+                    fill="#B3FF00"
                     fontSize="14"
                     className="sm:text-[22px]"
                     fontWeight="700"

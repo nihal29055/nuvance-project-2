@@ -42,8 +42,13 @@ const Roadmap: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const typedRoadmap = useTypingEffect("PLANNED MILESTONES", 80, isVisible);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640; // Tailwind's sm breakpoint
+  const titleText = isMobile ? "MILESTONES" : "PLANNED MILESTONES";
+
+  const typedRoadmap = useTypingEffect(titleText, 80, isVisible); // <-- FIXED
+
   const pink = "#66FF66";
+
 
   return (
     <section
@@ -119,11 +124,12 @@ const Roadmap: React.FC = () => {
         viewport={{ once: true, amount: 0.4 }}
       >
         <p className="text-[#66FF66] font-bold mb-2 text-lg">2024 Q3</p>
-        <p className="text-[#DDDDDD]text-[10.5px] leading-snug">
+        <p className="text-[#DDDDDD] text-[10.5px] leading-snug">
           Offering NFT holders exclusive content like videos and music;
           developing a game with interactive character use and charity support.
         </p>
       </motion.div>
+
 
       {/* Q4 */}
       <motion.div

@@ -15,54 +15,63 @@ export default function Home() {
   const [displayText, setDisplayText] = useState("");
   const [hovering, setHovering] = useState(false);
   const [inView, setInView] = useState(false);
-  const [animationsComplete, setAnimationsComplete] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const charIndex = useRef(0);
 
-  // Detect section in view
+  // IntersectionObserver + mobile fallback
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        } else {
+        if (entry.isIntersecting) setInView(true);
+        else {
           setInView(false);
           setDisplayText("");
           setHovering(false);
-          setAnimationsComplete(false);
+          charIndex.current = 0;
+          if (intervalRef.current) clearInterval(intervalRef.current);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // mobile-friendly
     );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    // mobile fallback: viewport me ho hi jaaye animation
+    if (window.innerWidth < 768) setInView(true);
+
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
-  // Typing effect — only on hover
+  // Typing effect
   useEffect(() => {
-    if (hovering && inView) {
-      let index = 0;
+    if ((hovering || window.innerWidth < 768) && inView) {
       setDisplayText("");
-      const typingInterval = setInterval(() => {
-        setDisplayText((prev) => prev + paragraphText[index]);
-        index++;
-        if (index >= paragraphText.length) {
-          clearInterval(typingInterval);
+      charIndex.current = 0;
+      if (intervalRef.current) clearInterval(intervalRef.current);
+
+      intervalRef.current = setInterval(() => {
+        if (charIndex.current < paragraphText.length) {
+          setDisplayText(paragraphText.slice(0, charIndex.current + 1));
+          charIndex.current += 1;
+        } else {
+          if (intervalRef.current) clearInterval(intervalRef.current);
         }
       }, 20);
-      return () => clearInterval(typingInterval);
     } else {
+      if (intervalRef.current) clearInterval(intervalRef.current);
       setDisplayText("");
+      charIndex.current = 0;
     }
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, [hovering, inView, paragraphText]);
 
   const shiftDistance = "8vw";
-
-  // Direct hover control — no animationsComplete here
   const voX = hovering && inView ? `-${shiftDistance}` : "0";
   const teX = hovering && inView ? shiftDistance : "0";
   const paraWidth = hovering && inView ? "30vw" : "0";
@@ -74,7 +83,7 @@ export default function Home() {
       className={`bg-black min-h-screen flex flex-col items-start pt-10 !px-10 ${montserrat.className} overflow-x-hidden`}
     >
       <div className="w-full text-[#66FF66] font-bold uppercase leading-none">
-        {/* Row 1 - CHOOSE */}
+        {/* Main Title */}
         <motion.div
           initial={{ x: "100%", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -85,7 +94,7 @@ export default function Home() {
           CHOOSE
         </motion.div>
 
-        {/* Row 2 - VOTE + paragraph */}
+        {/* VO ↔ TE with paragraph */}
         <motion.div
           initial={{ x: "100%" }}
           whileInView={{ x: 0 }}
@@ -95,7 +104,6 @@ export default function Home() {
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
         >
-          {/* VO */}
           <motion.span
             animate={{ x: voX }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -104,7 +112,6 @@ export default function Home() {
             VO
           </motion.span>
 
-          {/* Paragraph */}
           <motion.div
             animate={{ width: paraWidth, opacity: paraOpacity }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -114,7 +121,6 @@ export default function Home() {
             {displayText}
           </motion.div>
 
-          {/* TE */}
           <motion.span
             animate={{ x: teX }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -124,20 +130,14 @@ export default function Home() {
           </motion.span>
         </motion.div>
 
-        {/* Row 3 - Grid + OWN */}
+        {/* OWN with animated arrow */}
         <motion.div
           initial={{ x: "100%", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 1,
-            ease: "easeOut",
-            delay: 1.3,
-            onComplete: () => setAnimationsComplete(true),
-          }}
+          transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
           className="flex items-center gap-[2vw] justify-end"
         >
-          {/* Grid */}
           <div
             className="relative w-[35vw] h-[7vw] border-2 border-[#222] overflow-hidden"
             style={{
