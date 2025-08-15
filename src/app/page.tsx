@@ -348,14 +348,14 @@ Ready to make one yours?`;
                     cy="85"
                     rx="235"
                     ry="70"
-                    stroke="#66FF66"
+                    stroke="#B3FF00"
                     strokeWidth="5"
                     fill="transparent"
                   />
                   <text
                     x="265"
                     y="90"
-                    fill="#66FF66"
+                    fill="#B3FF00"
                     fontSize="14"
                     className="sm:text-[22px]"
                     fontWeight="700"

@@ -46,7 +46,7 @@
 
 /* Discord Tag */
 .discordTag {
-  background: linear-gradient(135deg, #66FF66, #adff2f);
+  background: linear-gradient(135deg, #66FF66, #B3FF00);
   padding: 13px 16px;
   border-radius: 3px;
   transform: rotate(-4deg);
@@ -59,8 +59,8 @@
 /* Twitter Tag (ellipse) */
 .twitterTag {
   background-color: transparent;
-  color: #DDDDDD;
-  border: 2px solid #DDDDDD;
+  color: #B3FF00;
+  border: 2px solid #B3FF00;
   border-radius: 100%;
   font-size: 12px;
   padding: 20px 36px;
@@ -73,7 +73,7 @@
 
 /* Instagram Tag (jagged brush) */
 .instagramTag {
-  background: linear-gradient(135deg, #DDDDDD, #DDDDDD);
+  background: linear-gradient(135deg, #66FF66, #B3FF00);
   clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
   padding: 4px 16px;
   transform: rotate(-8deg);
