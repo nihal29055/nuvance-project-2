@@ -16,7 +16,7 @@ export default function TypingLoader({ onFinish }: { onFinish: () => void }) {
 
   useEffect(() => {
     if (currentLine >= messages.length) {
-      setTimeout(() => setShowLoading(true), 300); // Slight delay before loading
+      setTimeout(() => setShowLoading(true), 300);
       setTimeout(() => {
         if (onFinish) onFinish();
       }, 1200);
@@ -36,7 +36,7 @@ export default function TypingLoader({ onFinish }: { onFinish: () => void }) {
       charIndex++;
 
       if (charIndex < messages[currentLine].length) {
-        typingTimeout = setTimeout(typeChar, 20); // Faster typing
+        typingTimeout = setTimeout(typeChar, 20);
       } else {
         setTimeout(() => {
           setCurrentLine((prev) => prev + 1);
@@ -51,15 +51,14 @@ export default function TypingLoader({ onFinish }: { onFinish: () => void }) {
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-black text-white px-4">
-      {/* Parent relative with extra bottom padding for spacing */}
-      <div className="relative flex flex-col items-center space-y-4 text-center max-w-4xl pb-[120px]">
+      <div className="relative flex flex-col items-center text-center max-w-4xl pb-[120px]">
         {displayedLines.map((line, idx) => (
           <p
             key={idx}
             className={`${
               idx === 0
-                ? "text-2xl md:text-4xl font-bold"
-                : "text-lg md:text-2xl font-medium text-gray-300"
+                ? "text-2xl md:text-4xl font-bold leading-[50px]"
+                : "text-lg md:text-2xl font-medium text-gray-300 leading-[40px]"
             } tracking-wide`}
           >
             {line}

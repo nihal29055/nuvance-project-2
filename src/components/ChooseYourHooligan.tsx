@@ -46,7 +46,7 @@ export default function ChooseYourHooligan() {
       <section className="min-h-screen bg-black text-[#DDDDDD] text-center flex flex-col items-center py-2 sm:py-10 relative px-4 sm:px-10 mt-0 sm:mt-20">
         {/* Title block */}
         <div className="relative z-20 mb-20 flex items-center justify-center flex-wrap sm:flex-nowrap gap-4">
-          <div className="absolute text-[3rem] sm:text-[8rem] font-black text-gray-800 opacity-40 select-none leading-none whitespace-pre-line">
+          <div className="absolute text-[3rem] sm:text-[8rem] font-black text-gray-600 opacity-40 select-none leading-none whitespace-pre-line">
             CHOOSE <br /> YOUR
           </div>
 

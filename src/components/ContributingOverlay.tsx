@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import styles from "../app/contributing.module.css";
 import { Rock_Salt } from "next/font/google";
 import Link from "next/link";
@@ -85,8 +86,19 @@ contri`;
     <section
       ref={sectionRef}
       className={styles.wrapper}
-      style={{ paddingBottom: "2rem" }}
+      style={{ paddingBottom: "2rem", position: "relative" }}
     >
+      {/* Bunny Image */}
+      <div className="absolute right-1/3 top-30 z-10">
+        <Image
+          src="/bunny2.png"
+          alt="Grumpy"
+          width={210}
+          height={210}
+          className="bunny-img"
+        />
+      </div>
+
       {/* Top Left Paragraph with typing */}
       <motion.p
         className={`${styles.topText} phone-responsive-toptext whitespace-pre-line`}
@@ -107,7 +119,6 @@ contri`;
         viewport={{ once: false, amount: 0.3 }}
         variants={fadeUp}
       >
-
         <h1
           className={`${styles.title} ${rockSalt.className}`}
           style={{ position: "relative", zIndex: 2 }}
@@ -129,7 +140,7 @@ contri`;
           style={{
             minHeight: "2.5rem",
             position: "relative",
-            zIndex: 1, // TWITTER ke neeche
+            zIndex: 1,
           }}
         >
           {typedContributing || (
@@ -138,13 +149,12 @@ contri`;
         </div>
 
         <Link
-          href="https://t.me/YourTelegramUsername" // Replace with your Telegram link
+          href="https://t.me/YourTelegramUsername"
           target="_blank"
           rel="noopener noreferrer"
         >
           <span className={`${styles.instagramTag} ${styles.tag}`}>TELEGRAM</span>
         </Link>
-
       </motion.div>
 
       {/* Subtitle and Paragraph with typing */}
@@ -163,6 +173,17 @@ contri`;
           {typedBottom}
         </p>
       </motion.div>
-    </section >
+
+      {/* Bunny Image */}
+      <div className="absolute right-32 bottom-1/9 z-10">
+        <Image
+          src="/bunny2.png"
+          alt="Grumpy"
+          width={210}
+          height={210}
+          className="bunny-img"
+        />
+      </div>
+    </section>
   );
 }

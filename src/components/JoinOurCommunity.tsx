@@ -82,17 +82,16 @@ export default function HooliganUI() {
       <section className="main-container relative flex flex-col items-center justify-center min-h-screen bg-black text-[#DDDDDD] overflow-hidden">
         {/* Background text */}
         <motion.div
-          className="absolute text-gray-800 text-[12vw] font-bold opacity-30 select-none"
+          className="absolute text-gray-600 font-bold opacity-30 select-none text-[12vw] sm:text-[10vw] md:text-[12vw] top-[50%] sm:top-[10%] left-1/2 -translate-x-1/2 text-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 0.3, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          style={{ lineHeight: 1, top: "5%", left: "5%" }}
         >
-          <span className="block leading-none">JOIN</span>
-          <span className="block leading-none">OUR</span>
+          <span className="block leading-none">JOIN OUR</span>
           <span className="block leading-none">COMMUNITY</span>
         </motion.div>
+
 
         {/* Bunny outline */}
         <motion.div

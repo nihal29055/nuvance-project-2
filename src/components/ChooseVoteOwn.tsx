@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import { motion } from "framer-motion";
 
@@ -33,11 +34,12 @@ export default function Home() {
           if (intervalRef.current) clearInterval(intervalRef.current);
         }
       },
-      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" } // mobile-friendly
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
 
-    // mobile fallback: viewport me ho hi jaaye animation
+    // mobile fallback
     if (window.innerWidth < 768) setInView(true);
 
     return () => {
@@ -80,9 +82,20 @@ export default function Home() {
   return (
     <div
       ref={sectionRef}
-      className={`bg-black min-h-screen flex flex-col items-start pt-10 !px-10 ${montserrat.className} overflow-x-hidden`}
+      className={`bg-black min-h-screen flex flex-col items-start pt-10 px-10 relative ${montserrat.className} overflow-x-hidden`}
     >
-      <div className="w-full text-[#66FF66] font-bold uppercase leading-none">
+      {/* Bunny Image */}
+      <div className="absolute left-20 bottom-[70px] z-10">
+        <Image
+          src="/bunny2.png"
+          alt="Grumpy"
+          width={210}
+          height={210}
+          className="bunny-img"
+        />
+      </div>
+
+      <div className="w-full text-[#66FF66] font-bold uppercase leading-none relative z-0">
         {/* Main Title */}
         <motion.div
           initial={{ x: "100%", opacity: 0 }}
@@ -136,16 +149,9 @@ export default function Home() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: "easeOut", delay: 1.3 }}
-          className="flex items-center gap-[2vw] justify-end"
+          className="flex items-center gap-[2vw] justify-end mt-10"
         >
-          <div
-            className="relative w-[35vw] h-[7vw] border-2 border-[#222] overflow-hidden"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)",
-              backgroundSize: "1.5vw 1.5vw",
-            }}
-          >
+          <div className="relative w-[35vw] h-[7vw] border-2 border-[#222] overflow-hidden">
             <motion.div
               className="absolute inset-0 flex items-center justify-end !mr-10 text-[1.5vw] text-[#66FF66]"
               animate={{ x: [0, 10, 0] }}

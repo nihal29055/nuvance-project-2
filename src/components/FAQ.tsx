@@ -295,7 +295,7 @@ const FAQ: React.FC = () => {
                 aria-labelledby={`faq-question-${item.id}`}
                 className={`faq-answer ${isOpen(item.id) ? "open" : ""}`}
               >
-                <p className="text-gray-400 text-sm font-bold">
+                <p className="text-gray-200 text-sm font-bold">
                   {item.answer}
                 </p>
               </div>

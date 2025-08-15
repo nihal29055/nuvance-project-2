@@ -142,15 +142,6 @@ Ready to make one yours?`;
       )}
 
       {phase === "typing" && <TypingLoader onFinish={() => setPhase("svg")} />}
-      {phase === "hero" && (
-        <Image
-          className="absolute left-4 top-12 bunny-img"
-          src="/bunny2.png"
-          alt="Grumpy"
-          width={210}
-          height={210}
-        />
-      )}
 
 
       {phase === "svg" && (
@@ -175,13 +166,13 @@ Ready to make one yours?`;
             </defs>
 
             {/* Stroke outline animation */}
+            {/* Stroke outline animation */}
             <text
               x="50%"
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              fontSize="32"
-              className={`${rockSalt.className} sm:text-[130px]`}
+              className={`${rockSalt.className} text-[90px] sm:text-[130px]`}
               fill="transparent"
               stroke="#66FF66"
               strokeWidth="3"
@@ -207,8 +198,7 @@ Ready to make one yours?`;
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              fontSize="32"
-              className={`${rockSalt.className} sm:text-[130px]`}
+              className={`${rockSalt.className} text-[90px] sm:text-[130px]`}
               fill="#66FF66"
               opacity="0"
             >
@@ -230,14 +220,14 @@ Ready to make one yours?`;
                 y="50%"
                 dominantBaseline="middle"
                 textAnchor="middle"
-                fontSize="32"
-                className={`${rockSalt.className} sm:text-[130px]`}
+                className={`${rockSalt.className} text-[90px] sm:text-[130px]`}
                 fill="#66FF66"
                 opacity="0.2"
               >
                 Grumpy
               </text>
             </g>
+
           </svg>
         </div>
       )}
@@ -255,7 +245,7 @@ Ready to make one yours?`;
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute left-1/2 top-[30%] sm:top-[2%] transform -translate-x-1/2 -translate-y-1/6
-                text-[40px] sm:text-[120px] lg:text-[220px] font-extrabold text-white/10 whitespace-nowrap select-none pointer-events-none"
+                text-[50px] sm:text-[140px] lg:text-[220px] font-extrabold text-white/10 whitespace-nowrap select-none pointer-events-none"
               style={{ fontFamily: "sans-serif" }}
             >
               MY PET
@@ -271,8 +261,7 @@ Ready to make one yours?`;
                 y="50%"
                 dominantBaseline="middle"
                 textAnchor="middle"
-                fontSize="32"
-                className={`${rockSalt.className} sm:text-[130px]`}
+                className={`${rockSalt.className} text-[90px] sm:text-[130px]`}
                 fill="#66FF66"
                 stroke="#66FF66"
                 strokeWidth="3"
