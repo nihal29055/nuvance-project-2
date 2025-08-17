@@ -244,7 +244,7 @@ Ready to make one yours?`;
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="absolute left-1/2 top-[30%] sm:top-[2%] transform -translate-x-1/2 -translate-y-1/6
+              className="absolute left-1/2 top-[35%] sm:top-[2%] transform -translate-x-1/2 -translate-y-1/6
                 text-[50px] sm:text-[140px] lg:text-[220px] font-extrabold text-white/10 whitespace-nowrap select-none pointer-events-none"
               style={{ fontFamily: "sans-serif" }}
             >
