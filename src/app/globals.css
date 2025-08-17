@@ -6,6 +6,7 @@ html {
   /* Firefox */
   -ms-overflow-style: none;
   /* IE & Edge */
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

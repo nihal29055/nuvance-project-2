@@ -143,7 +143,7 @@ export default function HooliganUI() {
 
         {/* Bottom right links */}
         <motion.div
-          className="absolute bottom-20 right-4 flex gap-8 text-[#66FF66] bottom-right-links"
+          className="absolute bottom-20 right-2 flex gap-3 text-[#66FF66] bottom-right-links"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}

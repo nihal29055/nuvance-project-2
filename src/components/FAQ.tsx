@@ -104,7 +104,7 @@ const FAQ: React.FC = () => {
         }
         .faq-title {
           margin-top: 9rem;
-          font-size: 5.5rem;
+          font-size: 5rem;
           font-weight: 800;
           color: ${pink};
           user-select: none;
@@ -190,7 +190,7 @@ const FAQ: React.FC = () => {
           }
           .faq-title {
             margin-top: 6rem;
-            font-size: 3rem;
+            font-size: 2.8rem;
             letter-spacing: 0.05em;
           }
           .faq-list {
